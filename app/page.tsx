@@ -5,7 +5,9 @@ export default function Home() {
      return (
           <div className={styles.page}>
                <main className={styles.main}>
-                    <h1 className="flex justify-end">Mergeeeeeeeeeeeeeeeee</h1>
+                    <h1 className="flex justify-end">
+                         Mergeeeeeeeeeeeeeeeee varianta 2
+                    </h1>
                </main>
           </div>
      );
