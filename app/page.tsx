@@ -1,14 +1,16 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import React from "react";
+import HeroSection from "@/components/hotel/HeroSection";
+import RoomsPreview from "@/components/hotel/RoomsPreview";
+import AmenitiesSection from "@/components/hotel/AmenitiesSection";
+import LocationSection from "@/components/hotel/LocationSection";
 
-export default function Home() {
+export default function HomePage() {
      return (
-          <div className={styles.page}>
-               <main className={styles.main}>
-                    <h1 className="flex justify-end">
-                         Mergeeeeeeeeeeeeeeeee varianta 2
-                    </h1>
-               </main>
-          </div>
+          <>
+               <HeroSection />
+               <RoomsPreview />
+               <AmenitiesSection />
+               <LocationSection />
+          </>
      );
 }

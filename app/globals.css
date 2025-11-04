@@ -1,32 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-     --background: #ffffff;
-     --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-     :root {
-          --background: #0a0a0a;
-          --foreground: #ededed;
-     }
-}
-
-html,
-body {
-     max-width: 100vw;
-     overflow-x: hidden;
-}
-
-body {
-     color: var(--foreground);
-     background: var(--background);
-     font-family: Arial, Helvetica, sans-serif;
-     -webkit-font-smoothing: antialiased;
-     -moz-osx-font-smoothing: grayscale;
-}
 
 * {
      box-sizing: border-box;
@@ -34,13 +9,41 @@ body {
      margin: 0;
 }
 
-a {
-     color: inherit;
-     text-decoration: none;
+html,
+body {
+     max-width: 100vw;
+     overflow-x: hidden;
+     scroll-behavior: smooth;
 }
 
-@media (prefers-color-scheme: dark) {
-     html {
-          color-scheme: dark;
+body {
+     color: #2d3748;
+     background: #f7fafc;
+     font-family: "Inter", sans-serif;
+}
+
+@layer base {
+     h1,
+     h2,
+     h3,
+     h4,
+     h5,
+     h6 {
+          font-family: "Playfair Display", serif;
+          font-weight: 600;
      }
+}
+
+@layer utilities {
+     .text-balance {
+          text-wrap: balance;
+     }
+}
+
+.gradient-gold {
+     background: linear-gradient(135deg, #d4af37 0%, #f4d03f 100%);
+}
+
+.gradient-burgundy {
+     background: linear-gradient(135deg, #8b1538 0%, #a61e4d 100%);
 }
