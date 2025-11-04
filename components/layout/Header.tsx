@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Mail } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 const navigation = [
      { name: "Acasă", href: "/" },
@@ -193,7 +194,18 @@ export default function Header() {
                                                                  : "scale-100"
                                                        }`}
                                                   >
-                                                       <Logo
+                                                       {/* <Logo
+                                                            className={`w-auto transition-all duration-300 ${
+                                                                 isScrolled
+                                                                      ? "h-10"
+                                                                      : "h-12"
+                                                            }`}
+                                                       /> */}
+                                                       <Image
+                                                            src="/logo.svg" // Calea directă din public
+                                                            alt="Logo"
+                                                            width={150} // Setează lățimea reală/dorită
+                                                            height={40} // Setează înălțimea reală/dorită
                                                             className={`w-auto transition-all duration-300 ${
                                                                  isScrolled
                                                                       ? "h-10"

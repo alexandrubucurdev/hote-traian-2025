@@ -12,7 +12,7 @@ export default function HeroSection() {
                     <div
                          className="w-full h-full bg-cover bg-center bg-fixed"
                          style={{
-                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?w=1920')`,
+                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('/bv.jpg')`,
                          }}
                     />
                </div>
@@ -47,14 +47,14 @@ export default function HeroSection() {
 
                          {/* Rating */}
                          <div className="flex items-center justify-center space-x-1 mb-8">
-                              {[...Array(5)].map((_, i) => (
+                              {[...Array(1)].map((_, i) => (
                                    <Star
                                         key={i}
                                         className="h-5 w-5 text-traian-gold fill-current"
                                    />
                               ))}
                               <span className="ml-3 text-white font-medium">
-                                   Hotel de 3 stele
+                                   Hotel o stea
                               </span>
                          </div>
 

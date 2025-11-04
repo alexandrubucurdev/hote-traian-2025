@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
      Phone,
      Mail,
@@ -19,7 +20,13 @@ export default function Footer() {
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                          {/* Hotel Info */}
                          <div className="lg:col-span-1">
-                              <Logo className="mb-6" />
+                              <Image
+                                   src="/logo-white.svg" // Calea directă din public
+                                   alt="Logo"
+                                   width={150} // Setează lățimea reală/dorită
+                                   height={40} // Setează înălțimea reală/dorită
+                                   className={`mb-6`}
+                              />
                               <p className="text-gray-300 mb-4 text-sm leading-relaxed">
                                    Hotel Traian vă oferă o experiență de neuitat
                                    în inima Brașovului, la doar câțiva pași de
@@ -27,14 +34,14 @@ export default function Footer() {
                                    turistice.
                               </p>
                               <div className="flex items-center space-x-1 text-traian-gold">
-                                   {[...Array(5)].map((_, i) => (
+                                   {[...Array(1)].map((_, i) => (
                                         <Star
                                              key={i}
                                              className="h-4 w-4 fill-current"
                                         />
                                    ))}
                                    <span className="ml-2 text-sm text-gray-300">
-                                        Hotel de 3 stele
+                                        Hotel o stea
                                    </span>
                               </div>
                          </div>
