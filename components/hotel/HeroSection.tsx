@@ -6,13 +6,13 @@ import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
      return (
-          <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+          <section className="relative min-h-[90svh] flex items-center justify-center overflow-hidden pt-8 pb-28 md:py-0">
                {/* Background Image */}
                <div className="absolute inset-0 z-0">
                     <div
                          className="w-full h-full bg-cover bg-center bg-fixed"
                          style={{
-                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('/bv.jpg')`,
+                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('images/bv.jpg')`,
                          }}
                     />
                </div>
@@ -38,10 +38,10 @@ export default function HeroSection() {
 
                          {/* Description */}
                          <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-                              Experiența tradițională românească în centrul
-                              orașului Brașov.
+                              Esențialul pentru șederea ta în Brașov. Simplu,
+                              curat și bine conectat.
                               <span className="block mt-2 text-traian-gold font-medium">
-                                   La doar 5 minute de Centrul Vechi
+                                   La doar 10 minute de Centrul Vechi
                               </span>
                          </p>
 

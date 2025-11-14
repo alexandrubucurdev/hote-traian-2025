@@ -21,7 +21,7 @@ export default function Footer() {
                          {/* Hotel Info */}
                          <div className="lg:col-span-1">
                               <Image
-                                   src="/logo-white.svg" // Calea directă din public
+                                   src="/logo/logo-white.svg" // Calea directă din public
                                    alt="Logo"
                                    width={150} // Setează lățimea reală/dorită
                                    height={40} // Setează înălțimea reală/dorită

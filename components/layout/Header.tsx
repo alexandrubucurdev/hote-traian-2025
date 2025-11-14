@@ -202,7 +202,7 @@ export default function Header() {
                                                             }`}
                                                        /> */}
                                                        <Image
-                                                            src="/logo.svg" // Calea directă din public
+                                                            src="/logo/logo.svg" // Calea directă din public
                                                             alt="Logo"
                                                             width={150} // Setează lățimea reală/dorită
                                                             height={40} // Setează înălțimea reală/dorită

@@ -15,11 +15,14 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-     title: "Hotel Traian Brașov | Cazare Centrală în Orașul Coroanei",
+     title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
      description:
-          "Hotel Traian oferă cazare confortabilă în centrul Brașovului, la doar 5 minute de Centrul Vechi. Camere dotate modern, WiFi gratuit, parcare inclusă.",
+          "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi. Camere dotate modern, WiFi gratuit, parcare inclusă.",
+     icons: {
+          icon: "/logo/logo.svg",
+     },
      keywords:
-          "hotel braşov, cazare braşov, hotel centru vechi, hotel traian, pensiune braşov",
+          "hotel braşov, cazare braşov, hotel centru vechi, hotel traian, pensiune braşov, cazare muncitori, cazare brasov, hotel brasov, cazare ieftina brasov",
      authors: [{ name: "Hotel Traian Brașov" }],
      creator: "Hotel Traian Brașov",
      publisher: "Hotel Traian Brașov",
@@ -29,10 +32,10 @@ export const metadata: Metadata = {
           telephone: false,
      },
      openGraph: {
-          title: "Hotel Traian Brașov | Cazare Centrală în Orașul Coroanei",
+          title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
           description:
-               "Hotel Traian oferă cazare confortabilă în centrul Brașovului, la doar 5 minute de Centrul Vechi.",
-          url: "https://hotel-traian-brasov.ro",
+               "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi.",
+          url: "https://www.hotelultraian.ro/",
           siteName: "Hotel Traian Brașov",
           images: [
                {

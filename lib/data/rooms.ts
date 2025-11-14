@@ -47,7 +47,7 @@ export const rooms: Room[] = [
                "Prosoape incluse",
           ],
           images: [
-               "/pat.jpg",
+               "images/pat.jpg",
                "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
                "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800",
           ],
