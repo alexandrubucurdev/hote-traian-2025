@@ -4,8 +4,6 @@ import React, { useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
-// --- NOU: Importăm componenta carusel ---
 import LightboxCarousel from "@/components/ui/LightboxCarousel";
 
 const buildingImages = [
@@ -24,6 +22,7 @@ const buildingImages = [
 ];
 
 export default function DespreNoiPage() {
+     // Starea pentru lightbox
      const [selectedImageIndex, setSelectedImageIndex] = useState<
           number | null
      >(null);
@@ -49,17 +48,16 @@ export default function DespreNoiPage() {
                                    Despre Hotel Traian
                               </h1>
                               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                                   Hotelul nostru este conceput pentru a fi o
-                                   soluție de cazare eficientă. Punem accent pe
-                                   curățenie și pe o locație practică, ce vă
-                                   oferă acces facil către zonele de interes.
+                                   Așezat în apropierea dealului Tâmpa, hotelul
+                                   nostru este diferit nu numai din punct de
+                                   vedere arhitectural, dar și ambiental.
                               </p>
                          </div>
                     </div>
                </section>
 
                {/* --- Secțiunea de Conținut (Text + Poze) --- */}
-               <section className="py-12 md:py-20">
+               <section className="py-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
                               {/* Coloana de Text */}
@@ -145,10 +143,10 @@ export default function DespreNoiPage() {
 
                               {/* Coloana de Imagini */}
                               <div className="lg:col-span-2">
-                                   <div className="grid grid-cols-2 gap-4 h-[450px]">
+                                   <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4 md:h-[450px]">
                                         {/* Imaginea Mare (Verticală) */}
                                         <div
-                                             className="col-span-1 row-span-2 h-full rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="w-full h-80 md:h-full md:col-span-1 md:row-span-2 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(0)
                                              }
@@ -163,7 +161,7 @@ export default function DespreNoiPage() {
                                         </div>
                                         {/* Imaginea Mică (Sus) */}
                                         <div
-                                             className="col-span-1 row-span-1 h-full rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="w-full h-64 md:h-full md:col-span-1 md:row-span-1 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(1)
                                              }
@@ -178,7 +176,7 @@ export default function DespreNoiPage() {
                                         </div>
                                         {/* Imaginea Mică (Jos) */}
                                         <div
-                                             className="col-span-1 row-span-1 h-full rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="w-full h-64 md:h-full md:col-span-1 md:row-span-1 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(2)
                                              }
