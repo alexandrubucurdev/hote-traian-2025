@@ -18,7 +18,7 @@ export default function HeroSection() {
                </div>
 
                {/* Content */}
-               <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+               <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center [text-shadow:0_0_8px_rgba(0,0,0,0.8)]">
                     <div className="animate-fade-in">
                          {/* Subtitle */}
                          <div className="flex items-center justify-center space-x-2 mb-4">
