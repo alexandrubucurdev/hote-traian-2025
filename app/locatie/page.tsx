@@ -170,7 +170,7 @@ export default function LocatiePage() {
                </section>
 
                {/* --- Secțiunea Hartă și Acces --- */}
-               <section className="py-12 md:py-20 bg-white">
+               <section className="py-20 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                               {/* Harta */}
@@ -245,7 +245,7 @@ export default function LocatiePage() {
                </section>
 
                {/* --- Secțiunea Atracții Locale --- */}
-               <section className="py-12 md:py-20 bg-traian-cream">
+               <section className="py-20 bg-traian-cream">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="text-center mb-16">
                               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
@@ -300,7 +300,7 @@ export default function LocatiePage() {
                </section>
 
                {/* --- Secțiunea Atracții Regionale --- */}
-               <section className="pb-20 pt-12 md:pt-20 bg-white">
+               <section className="py-20 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="text-center mb-16">
                               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
