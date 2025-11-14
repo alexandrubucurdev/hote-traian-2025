@@ -10,7 +10,7 @@ export default function HeroSection() {
                {/* Background Image */}
                <div className="absolute inset-0 z-0">
                     <div
-                         className="w-full h-full bg-cover bg-center bg-fixed"
+                         className="w-full h-full bg-cover bg-center md:bg-fixed"
                          style={{
                               backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('images/bv.jpg')`,
                          }}
