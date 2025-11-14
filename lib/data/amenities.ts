@@ -11,6 +11,11 @@ import {
      Tv,
      Lock,
      Bath,
+     Dumbbell,
+     Armchair,
+     Luggage,
+     Refrigerator,
+     Shirt,
 } from "lucide-react";
 
 export interface Amenity {
@@ -44,16 +49,9 @@ export const hotelAmenities: Amenity[] = [
           category: "service",
      },
      {
-          id: "restaurant",
-          name: "Restaurant",
-          description: "Restaurant cu bucătărie românească și internațională",
-          icon: Utensils,
-          category: "service",
-     },
-     {
           id: "location",
-          name: "Localizare Centrală",
-          description: "La 5 minute de mers pe jos de Centrul Vechi",
+          name: "Locație Accesibilă",
+          description: "La 10 minute de Centrul Vechi",
           icon: MapPin,
           category: "general",
      },
@@ -65,29 +63,44 @@ export const hotelAmenities: Amenity[] = [
           category: "general",
      },
      {
-          id: "breakfast",
-          name: "Mic Dejun",
-          description: "Mic dejun continental disponibil la cerere",
-          icon: Coffee,
+          id: "sala-sport",
+          name: "Sală de Sport",
+          description:
+               "Sala de handbal și fitness disponibilă pentru închiriere",
+          icon: Dumbbell,
           category: "service",
      },
      {
-          id: "room-service",
-          name: "Room Service",
-          description: "Serviciu la cameră disponibil în anumite ore",
-          icon: Phone,
+          id: "statie-taxi",
+          name: "Stație Taxi",
+          description: "Stație de taxi la doar 50 de metri de hotel",
+          icon: Car,
+          category: "general",
+     },
+     {
+          id: "zona-asteptare",
+          name: "Zonă de Așteptare",
+          description: "Zonă confortabilă de așteptare pentru oaspeți",
+          icon: Armchair,
+          category: "general",
+     },
+     {
+          id: "depozit-bagaje",
+          name: "Depozit Bagaje",
+          description: "Serviciu de depozitare a bagajelor pentru oaspeți",
+          icon: Luggage,
           category: "service",
+     },
+     {
+          id: "aparat-cafea",
+          name: "Aparat de Cafea",
+          description: "Aparat de cafea disponibil în zona de recepție",
+          icon: Coffee,
+          category: "general",
      },
 ];
 
 export const roomAmenities: Amenity[] = [
-     {
-          id: "air-conditioning",
-          name: "Aer Condiționat",
-          description: "Climatizare în toate camerele",
-          icon: Wind,
-          category: "room",
-     },
      {
           id: "tv",
           name: "TV LED",
@@ -96,17 +109,24 @@ export const roomAmenities: Amenity[] = [
           category: "room",
      },
      {
-          id: "safe",
-          name: "Seif",
-          description: "Seif electronic pentru obiecte de valoare",
-          icon: Lock,
-          category: "room",
-     },
-     {
           id: "bathroom",
           name: "Baie Privată",
           description: "Baie privată cu duș și articole de toaletă",
           icon: Bath,
+          category: "room",
+     },
+     {
+          id: "fridge",
+          name: "Frigider",
+          description: "Frigider pentru răcirea băuturilor și alimentelor",
+          icon: Refrigerator,
+          category: "room",
+     },
+     {
+          id: "wardrobe",
+          name: "Dulap Haine",
+          description: "Dulap spațios pentru depozitarea hainelor",
+          icon: Shirt,
           category: "room",
      },
 ];

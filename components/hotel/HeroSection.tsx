@@ -12,7 +12,7 @@ export default function HeroSection() {
                     <div
                          className="w-full h-full bg-cover bg-top md:bg-center md:bg-fixed"
                          style={{
-                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('images/bv.jpg')`,
+                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('../images/bv.webp')`,
                          }}
                     />
                </div>

@@ -30,7 +30,6 @@ const mobileMenuVariants = {
      },
 };
 
-// Definim breakpoint-ul 'md' (768px)
 const MD_BREAKPOINT = 768;
 
 export default function Header() {
@@ -45,7 +44,6 @@ export default function Header() {
 
      const [isMediumOrLarger, setIsMediumOrLarger] = useState(false);
 
-     // Hook-ul verifică acum breakpoint-ul 'md'
      useEffect(() => {
           const checkScreenSize = () => {
                setIsMediumOrLarger(window.innerWidth >= MD_BREAKPOINT);
@@ -55,7 +53,6 @@ export default function Header() {
           return () => window.removeEventListener("resize", checkScreenSize);
      }, []);
 
-     // Hook pentru a bloca scroll-ul
      useEffect(() => {
           if (mobileMenuOpen) {
                document.body.style.overflow = "hidden";
@@ -67,7 +64,6 @@ export default function Header() {
           };
      }, [mobileMenuOpen]);
 
-     // Hook-ul de scroll
      useEffect(() => {
           const handleScroll = () => {
                const currentScrollY = window.scrollY;
@@ -90,7 +86,6 @@ export default function Header() {
           return () => window.removeEventListener("scroll", handleScroll);
      }, [lastScrollY, mobileMenuOpen]);
 
-     // Hook pentru spacer-ul dinamic
      useEffect(() => {
           const timer = setTimeout(() => {
                if (isVisible && headerRef.current) {
@@ -139,7 +134,7 @@ export default function Header() {
                                                                  <Phone className="h-4 w-4" />
                                                                  <span>
                                                                       +40 268
-                                                                      123 456
+                                                                      333 065
                                                                  </span>
                                                             </a>
                                                             <a
@@ -153,8 +148,8 @@ export default function Header() {
                                                             </a>
                                                        </div>
                                                        <div className="text-traian-gold">
-                                                            Str. Republicii nr.
-                                                            42, Brașov
+                                                            Str. Lunii nr. 7,
+                                                            Brașov
                                                        </div>
                                                   </div>
                                              </div>
@@ -165,18 +160,15 @@ export default function Header() {
 
                          {/* Header-ul principal */}
                          <header
-                              // --- MODIFICARE AICI ---
                               className={`w-full transition-colors duration-300 ${
                                    isScrolled
-                                        ? "bg-white/95 backdrop-blur-xl border-b border-gray-100" // Am scos shadow-2xl de aici
+                                        ? "bg-white/95 backdrop-blur-xl border-b border-gray-100"
                                         : "bg-white/90 backdrop-blur-sm"
                               } ${
-                                   // Adăugăm umbra DOAR dacă s-a dat scroll ȘI meniul NU e deschis
                                    isScrolled && !mobileMenuOpen
                                         ? "shadow-2xl"
                                         : ""
                               }`}
-                              // --- SFÂRȘIT MODIFICARE ---
                          >
                               <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                    <div
@@ -202,10 +194,10 @@ export default function Header() {
                                                             }`}
                                                        /> */}
                                                        <Image
-                                                            src="/logo/logo.svg" // Calea directă din public
+                                                            src="/logo/logo.svg"
                                                             alt="Logo"
-                                                            width={150} // Setează lățimea reală/dorită
-                                                            height={40} // Setează înălțimea reală/dorită
+                                                            width={150}
+                                                            height={40}
                                                             className={`w-auto transition-all duration-300 ${
                                                                  isScrolled
                                                                       ? "h-10"

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
@@ -10,6 +12,7 @@ import {
      Car,
      Coffee,
      Star,
+     Map,
 } from "lucide-react";
 import Logo from "@/components/ui/Logo";
 
@@ -21,10 +24,10 @@ export default function Footer() {
                          {/* Hotel Info */}
                          <div className="lg:col-span-1">
                               <Image
-                                   src="/logo/logo-white.svg" // Calea directă din public
+                                   src="/logo/logo-white.svg"
                                    alt="Logo"
-                                   width={150} // Setează lățimea reală/dorită
-                                   height={40} // Setează înălțimea reală/dorită
+                                   width={150}
+                                   height={40}
                                    className={`mb-6`}
                               />
                               <p className="text-gray-300 mb-4 text-sm leading-relaxed">
@@ -59,7 +62,7 @@ export default function Footer() {
                                                   href="tel:+40268123456"
                                                   className="hover:text-traian-gold transition-colors"
                                              >
-                                                  +40 268 123 456
+                                                  +40 268 333 065
                                              </a>
                                              <div className="text-gray-400 text-xs">
                                                   Recepție 24/7
@@ -80,12 +83,12 @@ export default function Footer() {
                                    <div className="flex items-start space-x-3">
                                         <MapPin className="h-4 w-4 text-traian-gold mt-0.5" />
                                         <div>
-                                             <span>Str. Republicii nr. 42</span>
+                                             <span>Str. Lunii nr. 7</span>
                                              <br />
-                                             <span>Brașov, 500030</span>
+                                             <span>Brașov, 500327</span>
                                              <br />
                                              <span className="text-gray-400 text-xs">
-                                                  5 min de Centrul Vechi
+                                                  10 min de Centrul Vechi
                                              </span>
                                         </div>
                                    </div>
@@ -156,9 +159,9 @@ export default function Footer() {
                                         </span>
                                    </div>
                                    <div className="flex items-center space-x-2">
-                                        <Coffee className="h-4 w-4 text-traian-gold" />
+                                        <Map className="h-4 w-4 text-traian-gold" />
                                         <span className="text-gray-300">
-                                             Restaurant
+                                             Locație Accesibilă
                                         </span>
                                    </div>
                               </div>
@@ -167,24 +170,10 @@ export default function Footer() {
 
                     {/* Bottom Bar */}
                     <div className="border-t border-gray-700 mt-8 pt-8">
-                         <div className="flex flex-col md:flex-row justify-between items-center text-sm">
-                              <div className="text-gray-400 mb-4 md:mb-0">
-                                   © 2024 Hotel Traian Brașov. Toate drepturile
-                                   rezervate.
-                              </div>
-                              <div className="flex space-x-6 text-gray-400">
-                                   <Link
-                                        href="/politica-confidentialitate"
-                                        className="hover:text-traian-gold transition-colors"
-                                   >
-                                        Politica de Confidențialitate
-                                   </Link>
-                                   <Link
-                                        href="/termeni-conditii"
-                                        className="hover:text-traian-gold transition-colors"
-                                   >
-                                        Termeni și Condiții
-                                   </Link>
+                         <div className="flex flex-col md:flex-row justify-center items-center text-sm">
+                              <div className="text-gray-400  mb-4 md:mb-0">
+                                   © {new Date().getFullYear()} Hotel Traian
+                                   Brașov. Toate drepturile rezervate.
                               </div>
                          </div>
                     </div>

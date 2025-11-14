@@ -5,37 +5,37 @@ import Button from "@/components/ui/Button";
 const attractions = [
      {
           name: "Centrul Istoric",
-          distance: "5 min",
-          type: "walking",
+          distance: "10 min",
+          type: "car",
           description: "Piața Sfatului și străzile pietonale",
      },
      {
           name: "Biserica Neagră",
-          distance: "7 min",
+          distance: "15 min",
           type: "walking",
           description: "Monument istoric emblematic",
      },
      {
           name: "Telecabina Tâmpa",
-          distance: "10 min",
+          distance: "20 min",
           type: "walking",
           description: "Panoramă spectaculoasă asupra orașului",
      },
      {
           name: "Castelul Bran",
-          distance: "30 min",
+          distance: "55 min",
           type: "car",
           description: "Castelul lui Dracula",
      },
      {
           name: "Castelul Peleș",
-          distance: "45 min",
+          distance: "60 min",
           type: "car",
           description: "Perlă a arhitecturii românești",
      },
      {
           name: "Cetatea Râșnov",
-          distance: "20 min",
+          distance: "40 min",
           type: "car",
           description: "Fortăreață medievală impresionantă",
      },
@@ -51,9 +51,9 @@ export default function LocationSection() {
                               Localizare Perfectă
                          </h2>
                          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                              Hotel Traian este situat în inima Brașovului,
-                              oferind accesul perfect la toate atracțiile
-                              principale ale orașului și ale împrejurimilor.
+                              Hotel Traian beneficiază de o locație accesibilă
+                              în Brașov, oferind conexiuni facile către punctele
+                              de interes ale orașului și ale împrejurimilor.
                          </p>
                     </div>
 
@@ -62,7 +62,7 @@ export default function LocationSection() {
                          <div className="relative">
                               <div className="relative h-96 bg-gray-200 rounded-2xl overflow-hidden shadow-lg">
                                    <iframe
-                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2762.8947!2d25.5889!3d45.6427!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDM4JzM0LjAiTiAyNcKwMzUnMjAuMCJF!5e0!3m2!1sen!2sro!4v1234567890"
+                                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d777.8954169979602!2d25.624777618175525!3d45.645756927321585!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b35c6300d3f317%3A0x300c5d59f271cfb8!2sTraian!5e1!3m2!1sro!2sro!4v1763121946229!5m2!1sro!2sro"
                                         width="100%"
                                         height="100%"
                                         style={{ border: 0 }}
@@ -72,7 +72,7 @@ export default function LocationSection() {
                                         className="rounded-2xl"
                                    />
                               </div>
-                              <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
+                              <div className="hidden md:block absolute top-4 left-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
                                    <div className="flex items-center space-x-2">
                                         <MapPin className="h-5 w-5 text-traian-burgundy" />
                                         <div>
@@ -80,7 +80,7 @@ export default function LocationSection() {
                                                   Hotel Traian
                                              </div>
                                              <div className="text-sm text-gray-600">
-                                                  Str. Republicii nr. 42
+                                                  Str. Lunii nr. 7, Brașov
                                              </div>
                                         </div>
                                    </div>

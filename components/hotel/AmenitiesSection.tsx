@@ -17,13 +17,15 @@ export default function AmenitiesSection() {
                     </div>
 
                     {/* Amenities Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {/* 👇 MODIFICARE AICI (linia 19): Am înlocuit 'grid' cu 'flex' */}
+                    <div className="flex flex-wrap justify-center gap-8">
                          {hotelAmenities.map((amenity, index) => {
                               const IconComponent = amenity.icon;
                               return (
                                    <div
                                         key={amenity.id}
-                                        className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2"
+                                        /* 👇 MODIFICARE AICI (linia 24): Am adăugat 'basis' pentru lățime */
+                                        className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 basis-full md:basis-[calc(50%-1rem)] lg:basis-[calc(25%-1.5rem)] shrink-0 grow-0"
                                    >
                                         <div className="flex flex-col items-center text-center">
                                              {/* Icon */}
@@ -53,10 +55,10 @@ export default function AmenitiesSection() {
                               <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
                                    <div className="text-center">
                                         <div className="text-3xl font-bold text-traian-burgundy mb-2">
-                                             5 min
+                                             10 min
                                         </div>
                                         <div className="text-gray-600">
-                                             până la Centrul Vechi
+                                             până în Centrul Vechi
                                         </div>
                                    </div>
                                    <div className="text-center">

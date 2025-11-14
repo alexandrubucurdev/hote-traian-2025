@@ -9,6 +9,9 @@ import {
      Tv,
      Bath,
      Wind,
+     Refrigerator,
+     Info,
+     AlertTriangle,
 } from "lucide-react";
 import { rooms } from "@/lib/data/rooms";
 import Button from "@/components/ui/Button";
@@ -21,9 +24,16 @@ export const metadata: Metadata = {
 
 export default function CamerePage() {
      return (
-          <div className="min-h-screen bg-gray-50">
+          <div className="min-h-screen bg-traian-cream">
                {/* Header */}
-               <section className="bg-traian-charcoal text-white py-20">
+               <section
+                    className="bg-traian-charcoal text-white py-20 relative"
+                    style={{
+                         backgroundImage:
+                              "radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+                         backgroundSize: "10px 10px",
+                    }}
+               >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="text-center">
                               <h1 className="font-serif text-4xl lg:text-6xl font-bold mb-6">
@@ -39,13 +49,13 @@ export default function CamerePage() {
                </section>
 
                {/* Rooms Grid */}
-               <section className="py-20">
+               <section className="py-12 md:py-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                         <div className="flex flex-wrap justify-center gap-8">
                               {rooms.map((room, index) => (
                                    <div
                                         key={room.id}
-                                        className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group"
+                                        className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group w-full lg:max-w-xl"
                                    >
                                         {/* Image */}
                                         <div className="relative h-64 overflow-hidden">
@@ -66,8 +76,7 @@ export default function CamerePage() {
 
                                              <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2">
                                                   <div className="text-traian-burgundy font-bold text-lg">
-                                                       {room.price.low} -{" "}
-                                                       {room.price.high} RON
+                                                       {room.price} RON
                                                   </div>
                                                   <div className="text-gray-600 text-xs">
                                                        per noapte
@@ -120,13 +129,16 @@ export default function CamerePage() {
                                                   <div className="flex items-center space-x-1 text-traian-burgundy">
                                                        <Bath className="h-4 w-4" />
                                                        <span className="text-xs">
-                                                            Baie
+                                                            {room.id ===
+                                                            "camera-cvadrupla"
+                                                                 ? "Baie la comun"
+                                                                 : "Baie privată"}
                                                        </span>
                                                   </div>
                                                   <div className="flex items-center space-x-1 text-traian-burgundy">
-                                                       <Wind className="h-4 w-4" />
+                                                       <Refrigerator className="h-4 w-4" />
                                                        <span className="text-xs">
-                                                            AC
+                                                            Frigider
                                                        </span>
                                                   </div>
                                              </div>
@@ -177,11 +189,67 @@ export default function CamerePage() {
                                    </div>
                               ))}
                          </div>
+
+                         <div className="mt-20 bg-white rounded-2xl shadow-lg p-8 lg:p-12 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-t-4 border-traian-gold">
+                              <h3 className="font-serif text-3xl font-bold text-traian-charcoal mb-8 text-center">
+                                   Informații Utile & Politici
+                              </h3>
+                              <ul className="space-y-4 text-gray-700 max-w-2xl mx-auto">
+                                   <li className="flex items-start">
+                                        <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
+                                        <span>
+                                             Tarifele includ toate taxele.
+                                        </span>
+                                   </li>
+                                   <li className="flex items-start">
+                                        <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
+                                        <span>
+                                             Ziua hotelieră începe la ora 12:00
+                                             și se termină a doua zi la ora
+                                             12:00.
+                                        </span>
+                                   </li>
+                                   <li className="flex items-start">
+                                        <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
+                                        <span>
+                                             Cazarea se face doar pe baza cărții
+                                             de identitate sau a pașaportului.
+                                        </span>
+                                   </li>
+                                   <li className="flex items-start">
+                                        <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
+                                        <span>
+                                             Plata se face în momentul cazării.
+                                        </span>
+                                   </li>
+                                   <li className="flex items-start">
+                                        <AlertTriangle className="h-5 w-5 text-traian-gold mr-3 flex-shrink-0 mt-1" />
+                                        <span className="font-medium text-traian-charcoal">
+                                             Nu lăsați bunuri de valoare în
+                                             camere!
+                                        </span>
+                                   </li>
+                                   <li className="flex items-start">
+                                        <AlertTriangle className="h-5 w-5 text-traian-gold mr-3 flex-shrink-0 mt-1" />
+                                        <span className="font-medium text-traian-charcoal">
+                                             Nu răspundem pentru bunurile și
+                                             mașinile din parcare!
+                                        </span>
+                                   </li>
+                              </ul>
+                         </div>
                     </div>
                </section>
 
                {/* CTA Section */}
-               <section className="py-16 bg-traian-burgundy">
+               <section
+                    className="py-16 bg-traian-burgundy relative"
+                    style={{
+                         backgroundImage:
+                              "radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+                         backgroundSize: "10px 10px",
+                    }}
+               >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                          <h2 className="font-serif text-3xl font-bold text-white mb-4">
                               Ai nevoie de ajutor la alegerea camerei?

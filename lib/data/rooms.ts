@@ -5,10 +5,7 @@ export interface Room {
      shortDescription: string;
      capacity: number;
      size: number;
-     price: {
-          low: number;
-          high: number;
-     };
+     price: number;
      amenities: string[];
      images: string[];
      features: string[];
@@ -18,26 +15,23 @@ export interface Room {
 
 export const rooms: Room[] = [
      {
-          id: "camera-dubla-standard",
-          name: "Camera Dublă Standard",
+          id: "camera-matrimoniala",
+          name: "Camera Matrimonială",
           description:
-               "Camera noastră Standard oferă confort și funcționalitate într-un spațiu elegant de 18 mp. Dotată cu toate facilitățile moderne necesare pentru un sejur plăcut în Brașov.",
+               "Camera noastră Matrimonială oferă confort și funcționalitate într-un spațiu elegant de 21 mp. Dotată cu toate facilitățile moderne necesare pentru un sejur plăcut în Brașov.",
           shortDescription:
                "Cameră confortabilă cu toate facilitățile esențiale",
           capacity: 2,
-          size: 18,
-          price: {
-               low: 150,
-               high: 220,
-          },
+          size: 21,
+          price: 140,
           amenities: [
+               "Pat matrimonial confortabil",
                "WiFi gratuit",
-               'TV LED 32"',
-               "Minibar",
-               "Seif",
+               "TV",
+               "Televiziune prin cablu",
+               "Frigider",
                "Baie privată",
-               "Uscător de păr",
-               "Aer condiționat",
+               "Dulap haine",
           ],
           features: [
                "Pat matrimonial confortabil",
@@ -47,107 +41,29 @@ export const rooms: Room[] = [
                "Prosoape incluse",
           ],
           images: [
-               "images/pat.jpg",
-               "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800",
-               "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800",
+               "../images/mat1.jpg",
+               "../images/mat2.jpg",
+               "../images/mat3.jpg",
           ],
           isPopular: true,
      },
      {
-          id: "camera-dubla-superior",
-          name: "Camera Dublă Superior",
+          id: "camera-dubla-twin",
+          name: "Camera Dublă Twin",
           description:
-               "Camera Superior de 22 mp oferă spațiu suplimentar și un nivel de confort ridicat. Ideală pentru cuplurile care doresc un sejur memorabil în Brașov.",
-          shortDescription: "Cameră spațioasă cu vedere panoramică",
+               "Camera noastră Dublă Twin de 21 mp oferă confort și funcționalitate într-un spațiu elegant. Dotată cu toate facilitățile moderne necesare pentru un sejur plăcut în Brașov.",
+          shortDescription: "Confort și funcționalitate într-un spațiu elegant",
           capacity: 2,
-          size: 22,
-          price: {
-               low: 180,
-               high: 260,
-          },
+          size: 21,
+          price: 140,
           amenities: [
+               "Două paturi single",
                "WiFi gratuit",
-               'TV LED 40"',
-               "Minibar premium",
-               "Seif digital",
-               "Baie cu cadă",
-               "Uscător de păr",
-               "Aer condiționat",
-               "Balcon",
-          ],
-          features: [
-               "Pat King size",
-               "Mobilier elegant",
-               "Vedere la munți/oraș",
-               "Zona de relaxare",
-               "Balcon mobilat",
-          ],
-          images: [
-               "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800",
-               "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800",
-               "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=800",
-          ],
-          isPopular: false,
-     },
-     {
-          id: "camera-tripla",
-          name: "Camera Triplă",
-          description:
-               "Camera Triplă de 24 mp este perfectă pentru familii sau grupuri de prieteni. Oferă spațiu generos și toate facilitățile pentru un sejur confortabil.",
-          shortDescription: "Ideală pentru familii și grupuri de prieteni",
-          capacity: 3,
-          size: 24,
-          price: {
-               low: 200,
-               high: 290,
-          },
-          amenities: [
-               "WiFi gratuit",
-               'TV LED 40"',
-               "Minibar",
-               "Seif",
-               "Baie privată",
-               "Uscător de păr",
-               "Aer condiționat",
+               "TV",
+               "Televiziune prin cablu",
                "Frigider",
-          ],
-          features: [
-               "Pat matrimonial + pat simplu",
-               "Mobilier funcțional",
-               "Spațiu de depozitare generos",
-               "Masă de lucru",
-               "Fotolii confortabile",
-          ],
-          images: [
-               "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800",
-               "https://images.unsplash.com/photo-1595576508898-0ad5c879a061?w=800",
-               "https://images.unsplash.com/photo-1633505650701-6104d2254d7f?w=800",
-          ],
-          isPopular: true,
-     },
-     {
-          id: "suite-executiva",
-          name: "Suita Executivă",
-          description:
-               "Suita noastră Executivă de 35 mp reprezintă vârful luxului și confortului. Cu salon separat și dormitor spațios, este alegerea perfectă pentru oaspeții pretențioși.",
-          shortDescription:
-               "Luxul suprem cu salon separat și facilități premium",
-          capacity: 2,
-          size: 35,
-          price: {
-               low: 300,
-               high: 420,
-          },
-          amenities: [
-               "WiFi gratuit",
-               'TV LED 55"',
-               "Minibar premium",
-               "Seif digital",
-               "Baie cu jacuzzi",
-               "Uscător de păr",
-               "Aer condiționat",
-               "Balcon mare",
-               "Servicii concierge",
+               "Baie privată",
+               "Dulap haine",
           ],
           features: [
                "Pat King size premium",
@@ -158,9 +74,76 @@ export const rooms: Room[] = [
                "Zonă de dining",
           ],
           images: [
-               "https://images.unsplash.com/photo-1591088398332-8a7791972843?w=800",
-               "https://images.unsplash.com/photo-1576354302919-96748cb8299e?w=800",
-               "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800",
+               "../images/dub_tw1.jpg",
+               "../images/dub_tw2.jpg",
+               "../images/dub_tw3.jpg",
+          ],
+          isPopular: false,
+     },
+     {
+          id: "camera-tripla",
+          name: "Camera Triplă",
+          description:
+               "Camera Triplă de 21 mp este perfectă pentru familii sau grupuri de prieteni. Oferă spațiu generos și toate facilitățile pentru un sejur confortabil.",
+          shortDescription: "Ideală pentru familii și grupuri de prieteni",
+          capacity: 3,
+          size: 21,
+          price: 180,
+          amenities: [
+               "Trei paturi single",
+               "WiFi gratuit",
+               "TV",
+               "Televiziune prin cablu",
+               "Frigider",
+               "Baie privată",
+               "Dulap haine",
+          ],
+          features: [
+               "Pat matrimonial + pat simplu",
+               "Mobilier funcțional",
+               "Spațiu de depozitare generos",
+               "Masă de lucru",
+               "Fotolii confortabile",
+          ],
+          images: [
+               "../images/tripla1.jpg",
+               "../images/tripla2.jpg",
+               "../images/tripla3.jpg",
+          ],
+          isPopular: true,
+     },
+
+     {
+          id: "camera-cvadrupla",
+          name: "Camera Cvadruplă",
+          description:
+               "Camera noastră Cvadruplă de 21 mp oferă spațiu generos și confort pentru familii sau grupuri. Dotată cu toate facilitățile moderne pentru un sejur plăcut în Brașov.",
+          shortDescription:
+               "Spațiu generos și confort pentru familii și grupuri",
+          capacity: 4,
+          size: 21,
+          price: 150,
+          amenities: [
+               "Patru paturi single",
+               "WiFi gratuit",
+               "TV",
+               "Televiziune prin cablu",
+               "Frigider",
+               "Baie la comun",
+               "Dulap haine",
+          ],
+          features: [
+               "Pat King size premium",
+               "Salon separat",
+               "Vedere panoramică",
+               "Mobilier de lux",
+               "Balcon mobilat premium",
+               "Zonă de dining",
+          ],
+          images: [
+               "../images/patru1.jpg",
+               "../images/patru2.jpg",
+               "../images/patru3.jpg",
           ],
           isPopular: false,
      },

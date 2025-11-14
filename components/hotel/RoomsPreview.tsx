@@ -48,8 +48,7 @@ export default function RoomsPreview() {
                                         {/* Price */}
                                         <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-3 py-2">
                                              <div className="text-traian-burgundy font-bold text-lg">
-                                                  {room.price.low} -{" "}
-                                                  {room.price.high} RON
+                                                  {room.price} RON
                                              </div>
                                              <div className="text-gray-600 text-xs">
                                                   per noapte
