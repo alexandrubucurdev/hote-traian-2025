@@ -1,10 +1,21 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
      output: "export",
-     trailingSlash: true,
+     trailingSlash: true, // Recomandat pentru static hosting
+
      images: {
-          unoptimized: true,
-          domains: ["images.unsplash.com", "images.pexels.com"],
+          unoptimized: true, // Vital pentru static export
+          domains: [],
+     },
+
+     // Aceasta este metoda standard pentru SVG-uri în Next.js
+     webpack(config) {
+          config.module.rules.push({
+               test: /\.svg$/i,
+               use: ["@svgr/webpack"],
+          });
+
+          return config;
      },
 };
 
