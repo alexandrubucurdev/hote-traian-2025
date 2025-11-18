@@ -14,32 +14,57 @@ const playfair = Playfair_Display({
      variable: "--font-playfair",
 });
 
+const DOMAIN_URL = "https://www.hotelultraian.ro";
+
 export const metadata: Metadata = {
-     title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
+     metadataBase: new URL(DOMAIN_URL),
+
+     title: {
+          default: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
+          template: "%s | Hotel Traian Brașov",
+     },
      description:
           "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi. Camere dotate modern, WiFi gratuit, parcare inclusă.",
      icons: {
           icon: "/logo/logo.svg",
      },
-     keywords:
-          "hotel braşov, cazare braşov, hotel centru vechi, hotel traian, pensiune braşov, cazare muncitori, cazare brasov, hotel brasov, cazare ieftina brasov",
+     keywords: [
+          "hotel braşov",
+          "cazare braşov",
+          "hotel centru vechi",
+          "hotel traian",
+          "pensiune braşov",
+          "cazare muncitori",
+          "cazare ieftina brasov",
+     ],
      authors: [{ name: "Hotel Traian Brașov" }],
      creator: "Hotel Traian Brașov",
      publisher: "Hotel Traian Brașov",
-     formatDetection: {
-          email: false,
-          address: false,
-          telephone: false,
+
+     robots: {
+          index: true,
+          follow: true,
      },
+
+     verification: {
+          google: "codul-tau-de-la-google-search-console",
+     },
+
+     formatDetection: {
+          email: true,
+          address: false,
+          telephone: true,
+     },
+
      openGraph: {
           title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
           description:
                "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi.",
-          url: "https://www.hotelultraian.ro/",
+          url: DOMAIN_URL,
           siteName: "Hotel Traian Brașov",
           images: [
                {
-                    url: "/images/hotel-traian-og-image.jpg",
+                    url: "/logo/logo.svg",
                     width: 1200,
                     height: 630,
                     alt: "Hotel Traian Brașov - Cazare de Calitate",
