@@ -6,7 +6,8 @@ interface ButtonProps {
      variant?: "primary" | "secondary" | "outline";
      size?: "sm" | "md" | "lg";
      href?: string;
-     onClick?: () => void;
+     // 👇 AICI ESTE MODIFICAREA: permitem funcției să primească un eveniment
+     onClick?: (e?: React.MouseEvent<HTMLElement>) => void;
      disabled?: boolean;
      className?: string;
      type?: "button" | "submit" | "reset";
@@ -46,7 +47,7 @@ export default function Button({
 
      if (href && !disabled) {
           return (
-               <Link href={href} className={classes}>
+               <Link href={href} className={classes} onClick={onClick as any}>
                     {children}
                </Link>
           );

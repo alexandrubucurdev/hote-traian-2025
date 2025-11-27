@@ -19,7 +19,7 @@ import {
      Info,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
-import LightboxCarousel from "@/components/ui/LightboxCarousel"; // Verifică calea dacă e in ui sau components
+import LightboxCarousel from "@/components/ui/LightboxCarousel";
 import { Room } from "@/lib/data/rooms";
 
 interface RoomDetailsClientProps {
@@ -30,10 +30,14 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
      const [isLightboxOpen, setIsLightboxOpen] = useState(false);
      const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
+     // Pregătim toate imaginile pentru lightbox
      const lightboxImages = room.images.map((img) => ({
           src: img,
           alt: room.name,
      }));
+
+     // Selectăm doar primele 3 imagini pentru afișarea în pagină (fără hero)
+     const previewImages = room.images.slice(1, 4);
 
      const openLightbox = (index: number) => {
           setCurrentImageIndex(index);
@@ -42,13 +46,12 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
 
      return (
           <>
-               <div className="min-h-screen bg-traian-cream/50 font-sans text-traian-charcoal">
-                    {/* --- HERO SECTION --- */}
+               <div className="min-h-screen bg-traian-cream/50 font-sans text-traian-charcoal pb-20">
+                    {/* --- 1. HERO SECTION --- */}
                     <div
                          className="relative h-[70vh] min-h-[500px] w-full cursor-pointer group overflow-hidden"
                          onClick={() => openLightbox(0)}
                     >
-                         {/* Imaginea de fundal cu efect de zoom lent */}
                          <Image
                               src={room.images[0]}
                               alt={room.name}
@@ -56,8 +59,6 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                               priority
                               className="object-cover transition-transform duration-[2000ms] group-hover:scale-105"
                          />
-
-                         {/* Gradient Overlay pentru lizibilitate */}
                          <div className="absolute inset-0 bg-gradient-to-t from-traian-charcoal/90 via-traian-charcoal/40 to-transparent" />
 
                          {/* Buton Back */}
@@ -81,29 +82,31 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                    {room.name}
                               </h1>
 
-                              {/* Buton Galerie Custom */}
                               <div className="pointer-events-auto mt-4 animate-fade-in opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
-                                   <button
-                                        onClick={() => openLightbox(0)}
-                                        className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white border border-white/30 px-6 py-3 rounded-full transition-all duration-300 hover:scale-105 group-hover:bg-traian-gold/90 group-hover:border-traian-gold group-hover:text-traian-charcoal"
+                                   <Button
+                                        onClick={(e) => {
+                                             e?.stopPropagation();
+                                             openLightbox(0);
+                                        }}
+                                        className="flex items-center gap-2 !bg-white/10 hover:!bg-white/20 backdrop-blur-md !text-white !border !border-white/30 !rounded-full transition-all duration-300 hover:scale-105 group-hover:!bg-traian-gold/90 group-hover:!border-traian-gold group-hover:!text-traian-charcoal shadow-none hover:shadow-xl"
                                    >
                                         <ImageIcon className="w-5 h-5" />
                                         <span className="font-medium">
                                              Vezi Galeria Foto
                                         </span>
-                                   </button>
+                                   </Button>
                               </div>
                          </div>
                     </div>
 
-                    {/* --- MAIN CONTENT --- */}
+                    {/* --- 2. MAIN CONTENT --- */}
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20 -mt-20">
-                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                              {/* Coloana Stângă */}
-                              <div className="lg:col-span-2 space-y-8 animate-slide-up">
-                                   {/* Card Principal */}
-                                   <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100">
-                                        {/* Statistici "Premium" Grid */}
+                         {/* Folosim items-stretch pentru a forța coloanele să aibă aceeași înălțime */}
+                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
+                              {/* === COLOANA STÂNGA: Detalii & Facilități === */}
+                              <div className="lg:col-span-2 flex flex-col animate-slide-up">
+                                   <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100 h-full flex flex-col">
+                                        {/* Statistici Grid */}
                                         <div className="grid grid-cols-3 gap-4 mb-10 pb-10 border-b border-gray-100">
                                              <div className="flex flex-col items-center justify-center p-5 rounded-2xl bg-traian-cream border border-traian-gold/20 text-center hover:shadow-md transition-shadow">
                                                   <Users className="w-6 h-6 text-traian-burgundy mb-2" />
@@ -132,23 +135,23 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                                        Confort
                                                   </span>
                                                   <span className="font-serif text-lg text-traian-charcoal font-bold">
-                                                       Premium
+                                                       Standard
                                                   </span>
                                              </div>
                                         </div>
 
-                                        {/* Descriere */}
-                                        <div className="mb-12">
+                                        {/* Descriere (flex-grow asigură că ocupă spațiul disponibil) */}
+                                        <div className="mb-12 flex-grow">
                                              <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-6 flex items-center">
                                                   <span className="w-1 h-8 bg-traian-burgundy mr-4 rounded-full"></span>
                                                   Despre Cameră
                                              </h2>
-                                             <p className="text-gray-600 leading-8 text-lg font-light">
+                                             <p className="text-gray-600 leading-8 text-lg font-light text-justify">
                                                   {room.description}
                                              </p>
                                         </div>
 
-                                        {/* Facilități Grid */}
+                                        {/* Facilități */}
                                         <div className="mb-10">
                                              <h3 className="font-serif text-xl font-bold text-traian-charcoal mb-6">
                                                   Facilități Incluse
@@ -173,7 +176,7 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                         </div>
 
                                         {/* Icons Row */}
-                                        <div className="pt-8 border-t border-gray-100 flex flex-wrap gap-6 md:gap-10 justify-center md:justify-start opacity-70">
+                                        <div className="pt-8 border-t border-gray-100 flex flex-wrap gap-6 md:gap-10 justify-center md:justify-start opacity-70 mt-auto">
                                              <div
                                                   className="flex items-center gap-2"
                                                   title="WiFi Gratuit"
@@ -212,47 +215,13 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
                                         </div>
                                    </div>
-
-                                   {/* Galerie Foto Secundară */}
-                                   {room.images.length > 1 && (
-                                        <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
-                                             <h2 className="font-serif text-2xl font-bold text-traian-charcoal mb-6">
-                                                  Galerie Foto
-                                             </h2>
-                                             <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                                                  {room.images
-                                                       .slice(1)
-                                                       .map((img, index) => (
-                                                            <div
-                                                                 key={index}
-                                                                 className="relative h-48 rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300"
-                                                                 onClick={() =>
-                                                                      openLightbox(
-                                                                           index +
-                                                                                1
-                                                                      )
-                                                                 }
-                                                            >
-                                                                 <Image
-                                                                      src={img}
-                                                                      alt={`${room.name} ${index}`}
-                                                                      fill
-                                                                      className="object-cover transition-transform duration-700 group-hover:scale-110"
-                                                                 />
-                                                                 <div className="absolute inset-0 bg-black/0 group-hover:bg-traian-burgundy/20 transition-all duration-300 flex items-center justify-center">
-                                                                      <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 drop-shadow-lg" />
-                                                                 </div>
-                                                            </div>
-                                                       ))}
-                                             </div>
-                                        </div>
-                                   )}
                               </div>
 
-                              {/* Coloana Dreaptă (Sticky) */}
-                              <div className="lg:col-span-1">
-                                   <div className="sticky top-24 space-y-6 animate-slide-up [animation-delay:200ms]">
-                                        {/* Card Rezervare */}
+                              {/* === COLOANA DREAPTĂ: Preț & Suport === */}
+                              <div className="lg:col-span-1 flex flex-col animate-slide-up [animation-delay:200ms] h-full">
+                                   {/* Folosim justify-between pentru a împinge cardul de suport jos, aliniat cu stânga */}
+                                   <div className="flex flex-col justify-between h-full gap-6">
+                                        {/* Card Rezervare (Sus) */}
                                         <div className="bg-white rounded-3xl shadow-xl p-8 border-t-4 border-traian-burgundy relative overflow-hidden">
                                              <div className="text-center mb-8">
                                                   <span className="inline-block px-3 py-1 bg-traian-cream text-traian-gold text-[10px] font-bold uppercase tracking-wider rounded-full mb-3">
@@ -321,8 +290,8 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
                                         </div>
 
-                                        {/* Card Suport */}
-                                        <div className="bg-traian-charcoal text-white rounded-3xl p-8 text-center relative overflow-hidden group">
+                                        {/* Card Suport (Jos) */}
+                                        <div className="bg-traian-charcoal text-white rounded-3xl p-8 text-center relative overflow-hidden group shadow-lg">
                                              <div className="absolute top-0 right-0 w-32 h-32 bg-traian-gold/10 rounded-full blur-2xl -mr-16 -mt-16 transition-all group-hover:bg-traian-gold/20"></div>
 
                                              <div className="relative z-10">
@@ -347,6 +316,39 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                               </div>
                          </div>
                     </div>
+
+                    {/* --- 3. GALERIE FOTO (Sub secțiunea principală, aliniată pe centru) --- */}
+                    {previewImages.length > 0 && (
+                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 animate-slide-up [animation-delay:300ms]">
+                              <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
+                                   <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-8 text-center">
+                                        Galerie Foto
+                                   </h2>
+                                   {/* Flex container cu justify-center pentru a centra pozele */}
+                                   <div className="flex flex-wrap justify-center gap-6">
+                                        {previewImages.map((img, index) => (
+                                             <div
+                                                  key={index}
+                                                  className="relative w-full sm:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)] h-64 rounded-2xl overflow-hidden group cursor-pointer shadow-md hover:shadow-xl transition-all duration-300"
+                                                  onClick={() =>
+                                                       openLightbox(index + 1)
+                                                  } // index + 1 pentru că sărim peste Hero image
+                                             >
+                                                  <Image
+                                                       src={img}
+                                                       alt={`${room.name} ${index}`}
+                                                       fill
+                                                       className="object-cover transition-transform duration-700 group-hover:scale-110"
+                                                  />
+                                                  <div className="absolute inset-0 bg-black/0 group-hover:bg-traian-burgundy/20 transition-all duration-300 flex items-center justify-center">
+                                                       <Maximize2 className="text-white opacity-0 group-hover:opacity-100 transform scale-75 group-hover:scale-100 transition-all duration-300 drop-shadow-lg" />
+                                                  </div>
+                                             </div>
+                                        ))}
+                                   </div>
+                              </div>
+                         </div>
+                    )}
                </div>
 
                <LightboxCarousel
