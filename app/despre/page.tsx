@@ -8,15 +8,15 @@ import LightboxCarousel from "@/components/ui/LightboxCarousel";
 
 const buildingImages = [
      {
-          src: "../images/cladire.jpg",
-          alt: "Imagine clădire Hotel Traian",
-     },
-     {
-          src: "../images/cladire2.jpg",
+          src: "/images/receptie1.webp",
           alt: "Vedere de la Hotel Traian",
      },
      {
-          src: "../images/intrare.jpg",
+          src: "/images/cladire1.webp",
+          alt: "Imagine clădire Hotel Traian",
+     },
+     {
+          src: "/images/receptie2.webp",
           alt: "Fațadă Hotel Traian",
      },
 ];

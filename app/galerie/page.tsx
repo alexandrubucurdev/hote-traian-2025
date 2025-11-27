@@ -3,7 +3,6 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { rooms } from "@/lib/data/rooms";
 import Button from "@/components/ui/Button";
 import LightboxCarousel from "@/components/ui/LightboxCarousel";
@@ -88,11 +87,12 @@ export default function GaleriePage() {
                               ))}
                          </div>
 
-                         {/* Grila de imagini -- MODIFICARE AICI */}
+                         {/* Grila de imagini Centrată */}
                          <AnimatePresence mode="wait">
                               <motion.div
                                    key={activeCategory}
-                                   className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4"
+                                   // MODIFICARE: Folosim flex cu wrap și justify-center în loc de grid
+                                   className="flex flex-wrap justify-center gap-4"
                                    initial={{ opacity: 0 }}
                                    animate={{ opacity: 1 }}
                                    exit={{ opacity: 0 }}
@@ -104,7 +104,11 @@ export default function GaleriePage() {
                                    {imagesToShow.map((image, index) => (
                                         <div
                                              key={image.src}
-                                             className="relative h-64 rounded-lg shadow-md overflow-hidden cursor-pointer group"
+                                             // MODIFICARE: Lățimi calculate pentru a simula grid-ul dar centrat
+                                             // w-full pe mobil (1 col)
+                                             // sm:w-[calc(50%-0.5rem)] pe tablete (2 col) - 0.5rem e jumătate din gap-4
+                                             // lg:w-[calc(33.333%-0.67rem)] pe desktop (3 col)
+                                             className="relative h-64 rounded-lg shadow-md overflow-hidden cursor-pointer group w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.67rem)]"
                                              onClick={() =>
                                                   setSelectedImageIndex(index)
                                              }
