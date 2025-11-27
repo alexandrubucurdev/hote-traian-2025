@@ -4,9 +4,9 @@ import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X, Phone, Mail } from "lucide-react";
-import Logo from "@/components/ui/Logo";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import Button from "@/components/ui/Button";
 
 const navigation = [
      { name: "Acasă", href: "/" },
@@ -14,6 +14,7 @@ const navigation = [
      { name: "Galerie", href: "/galerie" },
      { name: "Despre Noi", href: "/despre" },
      { name: "Locația", href: "/locatie" },
+     { name: "Acționari", href: "/actionari" },
      { name: "Contact", href: "/contact" },
 ];
 
@@ -186,13 +187,6 @@ export default function Header() {
                                                                  : "scale-100"
                                                        }`}
                                                   >
-                                                       {/* <Logo
-                                                            className={`w-auto transition-all duration-300 ${
-                                                                 isScrolled
-                                                                      ? "h-10"
-                                                                      : "h-12"
-                                                            }`}
-                                                       /> */}
                                                        <Image
                                                             src="/logo/logo.svg"
                                                             alt="Logo"
@@ -248,8 +242,8 @@ export default function Header() {
                                                             </Link>
                                                        );
                                                   })}
-                                                  <Link
-                                                       href="/rezervari"
+                                                  <a
+                                                       href="tel:+40268123456"
                                                        className={`bg-traian-burgundy text-white rounded-lg hover:bg-traian-burgundy/90 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg ${
                                                             isScrolled
                                                                  ? "px-4 py-1.5 text-sm"
@@ -257,7 +251,7 @@ export default function Header() {
                                                        }`}
                                                   >
                                                        Rezervă Acum
-                                                  </Link>
+                                                  </a>
                                              </div>
                                         </div>
 
@@ -365,7 +359,7 @@ export default function Header() {
                                              }}
                                         >
                                              <Link
-                                                  href="/rezervari"
+                                                  href="tel:+40268123456"
                                                   className="block w-full text-center bg-traian-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-traian-burgundy/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
                                                   onClick={() =>
                                                        setMobileMenuOpen(false)
