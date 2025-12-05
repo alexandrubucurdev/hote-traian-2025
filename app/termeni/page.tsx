@@ -22,7 +22,7 @@ import {
 
 // --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
 const fadeIn = (delay = 0) => ({
-     hidden: { opacity: 0, y: 30 },
+     hidden: { opacity: 0, y: 20 },
      visible: {
           opacity: 1,
           y: 0,
@@ -34,8 +34,9 @@ export default function TermeniPage() {
      return (
           <div className="min-h-screen bg-traian-cream flex flex-col">
                {/* --- Header / Hero Section --- */}
+               {/* MODIFICARE: Redus padding pe mobil (py-12) față de desktop (md:py-20) */}
                <section
-                    className="bg-traian-charcoal text-white py-20 relative"
+                    className="bg-traian-charcoal text-white py-12 md:py-20 relative"
                     style={{
                          backgroundImage:
                               "radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
@@ -61,13 +62,15 @@ export default function TermeniPage() {
                </section>
 
                {/* --- Main Content --- */}
-               <section className="py-20 flex-1">
+               {/* MODIFICARE: Redus padding pe mobil (py-8) pentru a elimina spațiul alb excesiv */}
+               <section className="py-8 md:py-20 flex-1">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <motion.div
-                              className="bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-12"
+                              className="bg-white rounded-2xl shadow-xl p-6 md:p-12 space-y-12"
                               initial="hidden"
-                              whileInView="visible"
-                              viewport={{ once: true, amount: 0.1 }}
+                              // MODIFICARE: Folosim 'animate' în loc de 'whileInView' pentru a forța încărcarea
+                              // imediată a conținutului, evitând problemele pe mobil la elemente lungi.
+                              animate="visible"
                               variants={fadeIn(0.2)}
                          >
                               {/* Introducere */}
