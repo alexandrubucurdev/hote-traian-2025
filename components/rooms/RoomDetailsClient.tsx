@@ -263,14 +263,13 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
 
                                              <div className="space-y-3">
-                                                  <Button
-                                                       href="tel:+40268333065"
-                                                       variant="primary"
-                                                       className="w-full justify-center py-4 text-base shadow-lg shadow-traian-burgundy/20 hover:shadow-traian-burgundy/30 transition-shadow"
+                                                  <a
+                                                       href="tel:+40746332414"
+                                                       className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-burgundy text-white hover:bg-traian-burgundy/90 focus:ring-traian-burgundy w-full py-4 text-base shadow-lg shadow-traian-burgundy/20 hover:shadow-traian-burgundy/30 transition-shadow cursor-pointer"
                                                   >
                                                        <Phone className="w-5 h-5 mr-2" />
                                                        Rezervă Telefonic
-                                                  </Button>
+                                                  </a>
                                                   <Button
                                                        href="/contact"
                                                        variant="outline"
@@ -309,6 +308,13 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                                   >
                                                        <Phone className="w-5 h-5 mr-2 animate-pulse" />
                                                        +40 268 333 065
+                                                  </a>
+                                                  <a
+                                                       href="tel:+40746332414"
+                                                       className="inline-flex items-center text-traian-gold font-bold text-lg hover:text-white transition-colors"
+                                                  >
+                                                       <Phone className="w-5 h-5 mr-2 animate-pulse" />
+                                                       +40 746 332 414
                                                   </a>
                                              </div>
                                         </div>

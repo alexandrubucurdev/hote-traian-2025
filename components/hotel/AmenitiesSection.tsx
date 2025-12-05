@@ -7,24 +7,51 @@ export default function AmenitiesSection() {
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Header */}
                     <div className="text-center mb-16">
-                         <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
+                         <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-8">
                               Facilitățile Hotelului
                          </h2>
+
+                         {/* Secțiunea Servicii Gratuite - Obligatorie */}
+                         <div className="mb-8">
+                              <h3 className="font-serif text-sm font-bold text-traian-burgundy uppercase tracking-[0.2em] mb-4 relative inline-block after:content-[''] after:block after:w-1/2 after:h-[1px] after:bg-traian-gold after:mx-auto after:mt-2">
+                                   Servicii Gratuite
+                              </h3>
+                              <p className="text-gray-700 font-medium max-w-4xl mx-auto leading-loose text-base md:text-lg">
+                                   <span className="whitespace-nowrap">
+                                        WIFI &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Parcare &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Recepție 24/7 &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Sistem de supraveghere &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Comenzi taxi &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Zonă de așteptare &bull;
+                                   </span>{" "}
+                                   <span className="whitespace-nowrap">
+                                        Depozit bagaje
+                                   </span>
+                              </p>
+                         </div>
+
                          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                               Vă oferim toate facilitățile necesare pentru un
-                              sejur confortabil și memorabil în Brașov.
+                              sejur confortabil în Brașov.
                          </p>
                     </div>
-
-                    {/* Amenities Grid */}
-                    {/* 👇 MODIFICARE AICI (linia 19): Am înlocuit 'grid' cu 'flex' */}
                     <div className="flex flex-wrap justify-center gap-8">
                          {hotelAmenities.map((amenity, index) => {
                               const IconComponent = amenity.icon;
                               return (
                                    <div
                                         key={amenity.id}
-                                        /* 👇 MODIFICARE AICI (linia 24): Am adăugat 'basis' pentru lățime */
                                         className="group bg-white rounded-xl p-6 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 basis-full md:basis-[calc(50%-1rem)] lg:basis-[calc(25%-1.5rem)] shrink-0 grow-0"
                                    >
                                         <div className="flex flex-col items-center text-center">

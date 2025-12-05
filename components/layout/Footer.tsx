@@ -55,31 +55,42 @@ export default function Footer() {
                                    Contact
                               </h3>
                               <div className="space-y-3 text-sm">
-                                   <div className="flex items-center space-x-3">
+                                   {/* Secțiunea Telefon - Iconiță centrată */}
+                                   <div className="flex items-start space-x-3">
                                         <Phone className="h-4 w-4 text-traian-gold" />
-                                        <div>
+                                        <div className="flex flex-col">
                                              <a
-                                                  href="tel:+40268123456"
+                                                  href="tel:+40268333065"
                                                   className="hover:text-traian-gold transition-colors"
                                              >
                                                   +40 268 333 065
+                                             </a>
+                                             <a
+                                                  href="tel:+40746332414"
+                                                  className="hover:text-traian-gold transition-colors"
+                                             >
+                                                  +40 746 332 414
                                              </a>
                                              <div className="text-gray-400 text-xs">
                                                   Recepție 24/7
                                              </div>
                                         </div>
                                    </div>
+
+                                   {/* Secțiunea E-mail (Actualizată conform snippet-ului anterior) */}
                                    <div className="flex items-center space-x-3">
                                         <Mail className="h-4 w-4 text-traian-gold" />
                                         <div>
                                              <a
-                                                  href="mailto:rezervari@hotel-traian-brasov.ro"
+                                                  href="mailto:hoteltraianbrasov@gmail.com"
                                                   className="hover:text-traian-gold transition-colors"
                                              >
-                                                  rezervari@hotel-traian-brasov.ro
+                                                  hoteltraianbrasov@gmail.com
                                              </a>
                                         </div>
                                    </div>
+
+                                   {/* Secțiunea Adresă */}
                                    <div className="flex items-start space-x-3">
                                         <MapPin className="h-4 w-4 text-traian-gold mt-0.5" />
                                         <div>
@@ -88,6 +99,7 @@ export default function Footer() {
                                              <span>Brașov, 500327</span>
                                              <br />
                                              <span className="text-gray-400 text-xs">
+                                                  <Car className="h-4 w-4 inline-block mr-1" />
                                                   10 min de Centrul Vechi
                                              </span>
                                         </div>

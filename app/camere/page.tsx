@@ -260,12 +260,12 @@ export default function CamerePage() {
                               dumneavoastră.
                          </p>
                          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                              <Button
-                                   href="tel:+40268123456"
-                                   variant="secondary"
+                              <a
+                                   href="tel:+40746332414"
+                                   className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-6 py-3 text-base cursor-pointer"
                               >
                                    Sună la Recepție
-                              </Button>
+                              </a>
                               <Button
                                    href="/contact"
                                    variant="outline"

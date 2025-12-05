@@ -13,6 +13,7 @@ import {
      Mountain,
      BookOpen,
      CableCar,
+     Trees,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
@@ -29,7 +30,7 @@ const localAttractions = [
      {
           name: "Biserica Neagră",
           distance: "15 min",
-          type: "walking",
+          type: "car",
           Icon: Landmark,
           description: "Un monument istoric emblematic al Brașovului.",
           imageUrl:
@@ -70,6 +71,15 @@ const localAttractions = [
           description: "Turnuri de veghe medievale cu priveliști unice.",
           imageUrl:
                "https://placehold.co/600x400/2D3748/FFFFFF?text=Turnurile+Brașovului",
+     },
+     {
+          name: "Parc Aventura Brașov",
+          distance: "10 min",
+          type: "car",
+          Icon: Trees, // Am schimbat iconița în 'Trees' (dacă o ai importată) sau poți păstra 'Landmark'
+          description: "Cel mai mare parc de aventură din estul Europei.",
+          imageUrl:
+               "https://placehold.co/600x400/2F855A/FFFFFF?text=Parc+Aventura",
      },
 ];
 
@@ -128,6 +138,15 @@ const regionalAttractions = [
           description: "Un important centru spiritual și de reculegere.",
           imageUrl:
                "https://placehold.co/600x400/2D3748/FFFFFF?text=Mănăstirea+Sâmbăta",
+     },
+     {
+          name: "Canionul 7 Scări",
+          distance: "15 min",
+          type: "car",
+          Icon: Mountain, // Recomand iconița 'Mountain' sau 'Trees' pentru natură
+          description: "Traseu spectaculos prin defileu, cu scări și cascade.",
+          imageUrl:
+               "https://placehold.co/600x400/D4AF37/FFFFFF?text=Canionul+7+Scari",
      },
 ];
 

@@ -22,6 +22,19 @@ const attractions = [
           description: "Panoramă spectaculoasă asupra orașului",
      },
      {
+          name: "Parc Aventura",
+          distance: "10 min",
+          type: "car",
+          description:
+               "Cel mai mare parc de aventură din zonă, cu multiple tiroliene și trasee.",
+     },
+     {
+          name: "Canionul 7 Scări",
+          distance: "15 min",
+          type: "car",
+          description: "Defileu spectaculos cu cascade și scări metalice",
+     },
+     {
           name: "Castelul Bran",
           distance: "55 min",
           type: "car",

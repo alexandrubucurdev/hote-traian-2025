@@ -128,23 +128,42 @@ export default function Header() {
                                              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                                   <div className="flex justify-between items-center text-sm">
                                                        <div className="flex items-center space-x-6">
-                                                            <a
-                                                                 href="tel:+40268123456"
-                                                                 className="flex items-center space-x-2 hover:text-traian-gold transition-colors"
-                                                            >
+                                                            {/* Telefon Header - Modificat: Orizontal */}
+                                                            <div className="flex items-center space-x-2">
                                                                  <Phone className="h-4 w-4" />
-                                                                 <span>
-                                                                      +40 268
-                                                                      333 065
-                                                                 </span>
-                                                            </a>
+                                                                 <div className="flex items-center space-x-2">
+                                                                      <a
+                                                                           href="tel:+40268333065"
+                                                                           className="hover:text-traian-gold transition-colors"
+                                                                      >
+                                                                           +40
+                                                                           268
+                                                                           333
+                                                                           065
+                                                                      </a>
+                                                                      <span className="text-gray-500">
+                                                                           /
+                                                                      </span>
+                                                                      <a
+                                                                           href="tel:+40746332414"
+                                                                           className="hover:text-traian-gold transition-colors"
+                                                                      >
+                                                                           +40
+                                                                           746
+                                                                           332
+                                                                           414
+                                                                      </a>
+                                                                 </div>
+                                                            </div>
+
+                                                            {/* Email */}
                                                             <a
-                                                                 href="mailto:rezervari@hotel-traian-brasov.ro"
+                                                                 href="mailto:hoteltraianbrasov@gmail.com"
                                                                  className="flex items-center space-x-2 hover:text-traian-gold transition-colors"
                                                             >
                                                                  <Mail className="h-4 w-4" />
                                                                  <span>
-                                                                      rezervari@hotel-traian-brasov.ro
+                                                                      hoteltraianbrasov@gmail.com
                                                                  </span>
                                                             </a>
                                                        </div>
@@ -202,7 +221,7 @@ export default function Header() {
                                              </Link>
                                         </div>
 
-                                        {/* Navigație Desktop (apare de la 'lg' în sus) */}
+                                        {/* Navigație Desktop */}
                                         <div className="hidden lg:block">
                                              <div
                                                   className={`flex items-center transition-all duration-300 ${
@@ -243,7 +262,7 @@ export default function Header() {
                                                        );
                                                   })}
                                                   <a
-                                                       href="tel:+40268123456"
+                                                       href="tel:+40746332414"
                                                        className={`bg-traian-burgundy text-white rounded-lg hover:bg-traian-burgundy/90 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg ${
                                                             isScrolled
                                                                  ? "px-4 py-1.5 text-sm"
@@ -255,7 +274,7 @@ export default function Header() {
                                              </div>
                                         </div>
 
-                                        {/* Buton Meniu Mobil (dispare de la 'lg' în sus) */}
+                                        {/* Buton Meniu Mobil */}
                                         <div className="lg:hidden">
                                              <button
                                                   type="button"
@@ -296,7 +315,6 @@ export default function Header() {
                               </nav>
                          </header>
                     </div>
-                    {/* --- Sfârșitul wrapper-ului de măsurare (headerRef) --- */}
 
                     {/* --- Meniul Mobil --- */}
                     <AnimatePresence>
@@ -358,15 +376,15 @@ export default function Header() {
                                                             : "0ms",
                                              }}
                                         >
-                                             <Link
-                                                  href="tel:+40268123456"
+                                             <a
+                                                  href="tel:+40746332414"
                                                   className="block w-full text-center bg-traian-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-traian-burgundy/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
                                                   onClick={() =>
                                                        setMobileMenuOpen(false)
                                                   }
                                              >
                                                   Rezervă Acum
-                                             </Link>
+                                             </a>
                                              <div
                                                   className={`pt-4 border-t border-gray-200 mt-4 transition-all duration-300 ${
                                                        mobileMenuOpen
@@ -381,22 +399,28 @@ export default function Header() {
                                                   }}
                                              >
                                                   <div className="flex flex-col space-y-2 text-sm text-gray-600">
+                                                       {/* Telefon Mobil - Rămâne vertical pentru spațiu */}
+                                                       <div className="flex items-start space-x-2">
+                                                            <Phone className="h-4 w-4 mt-1" />
+                                                            <div className="flex flex-col">
+                                                                 <a href="tel:+40268333065">
+                                                                      +40 268
+                                                                      333 065
+                                                                 </a>
+                                                                 <a href="tel:+40746332414">
+                                                                      +40 746
+                                                                      332 414
+                                                                 </a>
+                                                            </div>
+                                                       </div>
+
                                                        <a
-                                                            href="tel:+40268123456"
-                                                            className="flex items-center space-x-2"
-                                                       >
-                                                            <Phone className="h-4 w-4" />
-                                                            <span>
-                                                                 +40 268 123 456
-                                                            </span>
-                                                       </a>
-                                                       <a
-                                                            href="mailto:rezervari@hotel-traian-brasov.ro"
+                                                            href="mailto:hoteltraianbrasov@gmail.com"
                                                             className="flex items-center space-x-2"
                                                        >
                                                             <Mail className="h-4 w-4" />
                                                             <span className="break-all">
-                                                                 rezervari@hotel-traian-brasov.ro
+                                                                 hoteltraianbrasov@gmail.com
                                                             </span>
                                                        </a>
                                                   </div>
@@ -407,7 +431,6 @@ export default function Header() {
                          )}
                     </AnimatePresence>
                </motion.div>
-               {/* --- Sfârșitul wrapper-ului principal (motion.div) --- */}
 
                {/* Spacer-ul dinamic */}
                <motion.div

@@ -208,22 +208,30 @@ export default function ContactPage() {
 
                                    {/* Informații Contact Interactive */}
                                    <div className="space-y-6">
-                                        <a
-                                             href="tel:+40268333065"
-                                             className="flex items-center group p-4 rounded-lg hover:bg-white hover:shadow-md transition-all"
-                                        >
-                                             <Phone className="h-6 w-6 text-traian-burgundy mr-4 transition-all duration-300 group-hover:text-traian-gold group-hover:scale-110" />
+                                        <div className="flex items-start group p-4 rounded-lg hover:bg-white hover:shadow-md transition-all">
+                                             <Phone className="h-6 w-6 text-traian-burgundy mr-4 flex-shrink-0 mt-1 transition-all duration-300 group-hover:text-traian-gold group-hover:scale-110" />
                                              <div>
-                                                  <h4 className="font-semibold text-lg text-traian-charcoal">
+                                                  <h4 className="font-semibold text-lg text-traian-charcoal mb-1">
                                                        Telefon
                                                   </h4>
-                                                  <p className="text-gray-600 group-hover:text-traian-burgundy transition-colors">
-                                                       +40 268 333 065
-                                                  </p>
+                                                  <div className="flex flex-col space-y-1">
+                                                       <a
+                                                            href="tel:+40268333065"
+                                                            className="text-gray-600 hover:text-traian-burgundy transition-colors"
+                                                       >
+                                                            +40 268 333 065
+                                                       </a>
+                                                       <a
+                                                            href="tel:+40746332414"
+                                                            className="text-gray-600 hover:text-traian-burgundy transition-colors"
+                                                       >
+                                                            +40 746 332 414
+                                                       </a>
+                                                  </div>
                                              </div>
-                                        </a>
+                                        </div>
                                         <a
-                                             href="mailto:rezervari@hotel-traian-brasov.ro"
+                                             href="mailto:hoteltraianbrasov@gmail.com"
                                              className="flex items-center group p-4 rounded-lg hover:bg-white hover:shadow-md transition-all"
                                         >
                                              <Mail className="h-6 w-6 text-traian-burgundy mr-4 transition-all duration-300 group-hover:text-traian-gold group-hover:scale-110" />
@@ -232,7 +240,7 @@ export default function ContactPage() {
                                                        E-mail
                                                   </h4>
                                                   <p className="text-gray-600 group-hover:text-traian-burgundy transition-colors">
-                                                       rezervari@hotel-traian-brasov.ro
+                                                       hoteltraianbrasov@gmail.com
                                                   </p>
                                              </div>
                                         </a>
@@ -300,18 +308,19 @@ export default function ContactPage() {
 
                               {/* --- MODIFICAT: Coloana din Dreapta (Formular) --- */}
                               <motion.div
-                                   className="lg:col-span-3 bg-white p-8 lg:p-12 rounded-2xl shadow-xl"
+                                   className="lg:col-span-3 bg-white p-8 lg:p-12 rounded-2xl shadow-xl flex flex-col justify-center h-full"
                                    initial="hidden"
                                    whileInView="visible"
                                    viewport={{ once: true, amount: 0.1 }}
-                                   variants={fadeIn(0.4)} // Animația apare a doua
+                                   variants={fadeIn(0.4)}
                               >
                                    <form
                                         onSubmit={handleSubmit(onSubmit)}
                                         className="space-y-8"
                                    >
                                         <div>
-                                             <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-6">
+                                             {/* MODIFICARE AICI: text-center și mb-10 */}
+                                             <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-10 text-center">
                                                   Trimite-ne un Mesaj
                                              </h2>
 

@@ -37,7 +37,8 @@ export const hotelAmenities: Amenity[] = [
      {
           id: "parking",
           name: "Parcare Gratuită",
-          description: "Parcare privată gratuită pentru oaspeții hotelului",
+          description:
+               "Parcare privată gratuită pentru oaspeții hotelului. Nu este necesară rezervare.",
           icon: Car,
           category: "general",
      },
@@ -64,15 +65,15 @@ export const hotelAmenities: Amenity[] = [
      },
      {
           id: "sala-sport",
-          name: "Sală de Sport",
+          name: "Activități sportive cu partenerii noștri",
           description:
-               "Sala de handbal și fitness disponibilă pentru închiriere",
+               "Str. Lunii nr. 6: YouRadventure (fitness, Real Ryder) și Yor fit Team (wellness). Acces sală sport în limita disponibilității.",
           icon: Dumbbell,
           category: "service",
      },
      {
           id: "statie-taxi",
-          name: "Stație Taxi",
+          name: "Comenzi Taxi",
           description: "Stație de taxi la doar 50 de metri de hotel",
           icon: Car,
           category: "general",

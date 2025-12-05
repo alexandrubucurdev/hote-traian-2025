@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { ChevronRight, MapPin, Star, Phone } from "lucide-react";
+import { ChevronRight, MapPin, Star, Phone, Car } from "lucide-react";
 import Button from "@/components/ui/Button";
 
 export default function HeroSection() {
@@ -12,7 +12,7 @@ export default function HeroSection() {
                     <div
                          className="w-full h-full bg-cover bg-top md:bg-center md:bg-fixed"
                          style={{
-                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('/images/bv.webp')`,
+                              backgroundImage: `linear-gradient(rgba(45, 55, 72, 0.4), rgba(139, 21, 56, 0.3)), url('/images/bg.webp')`,
                          }}
                     />
                </div>
@@ -20,27 +20,20 @@ export default function HeroSection() {
                {/* Content */}
                <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center [text-shadow:0_0_8px_rgba(0,0,0,0.8)]">
                     <div className="animate-fade-in">
-                         {/* Subtitle */}
-                         <div className="flex items-center justify-center space-x-2 mb-4">
-                              <MapPin className="h-5 w-5 text-traian-gold" />
-                              <span className="text-traian-gold font-medium text-lg">
-                                   În inima Brașovului
-                              </span>
-                         </div>
-
                          {/* Main Title */}
-                         <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
+                         <h1 className="font-serif text-5xl sm:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight flex items-center justify-center gap-3 sm:gap-5">
                               Hotel
-                              <span className="text-traian-gold block lg:inline lg:ml-4">
-                                   Traian
-                              </span>
+                              <Star className="h-8 w-8 sm:h-12 sm:w-12 text-traian-gold fill-current" />
+                              <span className="text-white">Traian</span>
                          </h1>
 
                          {/* Description */}
                          <p className="text-xl sm:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
-                              Esențialul pentru șederea ta în Brașov. Simplu,
-                              curat și bine conectat.
-                              <span className="block mt-2 text-traian-gold font-medium">
+                              Loc de cazare ideal pentru șederi scurte și buget
+                              redus. Curat, funcțional și cu acces facil la
+                              toate punctele de interes.
+                              <span className="mt-2 text-traian-gold font-medium flex items-center justify-center gap-2">
+                                   <Car className="h-5 w-5" />
                                    La doar 10 minute de Centrul Vechi
                               </span>
                          </p>
@@ -70,15 +63,13 @@ export default function HeroSection() {
                                    <ChevronRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                               </Button>
 
-                              <Button
-                                   href="tel:+40268123456"
-                                   variant="secondary"
-                                   size="lg"
-                                   className="group shadow-xl hover:shadow-2xl transform hover:scale-105"
+                              <a
+                                   href="tel:+40746332414"
+                                   className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-8 py-4 text-lg group shadow-xl hover:shadow-2xl transform hover:scale-105 cursor-pointer"
                               >
                                    <Phone className="mr-2 h-5 w-5" />
                                    Sună Acum
-                              </Button>
+                              </a>
                          </div>
 
                          {/* Quick Info */}
@@ -88,7 +79,7 @@ export default function HeroSection() {
                                         WiFi Gratuit
                                    </div>
                                    <div className="text-white/80 text-sm">
-                                        Internet de mare viteză
+                                        WIFI gratuit în spațiile publice
                                    </div>
                               </div>
                               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
@@ -96,7 +87,7 @@ export default function HeroSection() {
                                         Parcare Gratuită
                                    </div>
                                    <div className="text-white/80 text-sm">
-                                        Parcare privată securizată
+                                        Parcare gratuită
                                    </div>
                               </div>
                               <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
