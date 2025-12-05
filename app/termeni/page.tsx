@@ -22,7 +22,7 @@ import {
 
 // --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
 const fadeIn = (delay = 0) => ({
-     hidden: { opacity: 0, y: 20 },
+     hidden: { opacity: 0, y: 30 },
      visible: {
           opacity: 1,
           y: 0,

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { motion } from "framer-motion";
 import {
      Wifi,
      Tv,
@@ -21,6 +22,16 @@ import {
 import Button from "@/components/ui/Button";
 import LightboxCarousel from "@/components/ui/LightboxCarousel";
 import { Room } from "@/lib/data/rooms";
+
+// --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
+const fadeIn = (delay = 0) => ({
+     hidden: { opacity: 0, y: 20 },
+     visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
+     },
+});
 
 interface RoomDetailsClientProps {
      room: Room;
@@ -75,14 +86,29 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
 
                          {/* Text Central */}
                          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-4 pointer-events-none z-10 mt-10">
-                              <span className="text-traian-gold uppercase tracking-[0.2em] text-xs md:text-sm font-bold mb-4 animate-fade-in">
+                              <motion.span
+                                   className="text-traian-gold uppercase tracking-[0.2em] text-xs md:text-sm font-bold mb-4"
+                                   initial="hidden"
+                                   animate="visible"
+                                   variants={fadeIn(0)}
+                              >
                                    Hotel Traian Brașov
-                              </span>
-                              <h1 className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-xl animate-slide-up">
+                              </motion.span>
+                              <motion.h1
+                                   className="font-serif text-5xl md:text-7xl font-bold text-white mb-6 drop-shadow-xl"
+                                   initial="hidden"
+                                   animate="visible"
+                                   variants={fadeIn(0.2)}
+                              >
                                    {room.name}
-                              </h1>
+                              </motion.h1>
 
-                              <div className="pointer-events-auto mt-4 animate-fade-in opacity-0 [animation-delay:200ms] [animation-fill-mode:forwards]">
+                              <motion.div
+                                   className="pointer-events-auto mt-4"
+                                   initial="hidden"
+                                   animate="visible"
+                                   variants={fadeIn(0.4)}
+                              >
                                    <Button
                                         onClick={(e) => {
                                              e?.stopPropagation();
@@ -95,7 +121,7 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              Vezi Galeria Foto
                                         </span>
                                    </Button>
-                              </div>
+                              </motion.div>
                          </div>
                     </div>
 
@@ -104,7 +130,12 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                          {/* Folosim items-stretch pentru a forța coloanele să aibă aceeași înălțime */}
                          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch">
                               {/* === COLOANA STÂNGA: Detalii & Facilități === */}
-                              <div className="lg:col-span-2 flex flex-col animate-slide-up">
+                              <motion.div
+                                   className="lg:col-span-2 flex flex-col"
+                                   initial="hidden"
+                                   animate="visible"
+                                   variants={fadeIn(0.2)} // Animație la încărcare
+                              >
                                    <div className="bg-white rounded-3xl shadow-xl p-8 md:p-10 border border-gray-100 h-full flex flex-col">
                                         {/* Statistici Grid */}
                                         <div className="grid grid-cols-3 gap-4 mb-10 pb-10 border-b border-gray-100">
@@ -140,7 +171,7 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
                                         </div>
 
-                                        {/* Descriere (flex-grow asigură că ocupă spațiul disponibil) */}
+                                        {/* Descriere */}
                                         <div className="mb-12 flex-grow">
                                              <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-6 flex items-center">
                                                   <span className="w-1 h-8 bg-traian-burgundy mr-4 rounded-full"></span>
@@ -206,10 +237,15 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
                                         </div>
                                    </div>
-                              </div>
+                              </motion.div>
 
                               {/* === COLOANA DREAPTĂ: Preț & Suport === */}
-                              <div className="lg:col-span-1 flex flex-col animate-slide-up [animation-delay:200ms] h-full">
+                              <motion.div
+                                   className="lg:col-span-1 flex flex-col h-full"
+                                   initial="hidden"
+                                   animate="visible"
+                                   variants={fadeIn(0.4)} // Apare după coloana stângă
+                              >
                                    {/* Folosim justify-between pentru a împinge cardul de suport jos, aliniat cu stânga */}
                                    <div className="flex flex-col justify-between h-full gap-6">
                                         {/* Card Rezervare (Sus) */}
@@ -310,13 +346,19 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                              </div>
                                         </div>
                                    </div>
-                              </div>
+                              </motion.div>
                          </div>
                     </div>
 
                     {/* --- 3. GALERIE FOTO (Sub secțiunea principală, aliniată pe centru) --- */}
                     {previewImages.length > 0 && (
-                         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 animate-slide-up [animation-delay:300ms]">
+                         <motion.div
+                              className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12"
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.6)}
+                         >
                               <div className="bg-white rounded-3xl shadow-xl p-8 border border-gray-100">
                                    <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-8 text-center">
                                         Galerie Foto
@@ -344,7 +386,7 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                         ))}
                                    </div>
                               </div>
-                         </div>
+                         </motion.div>
                     )}
                </div>
 
