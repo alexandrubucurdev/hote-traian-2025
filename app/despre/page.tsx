@@ -3,8 +3,18 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
-import { motion, AnimatePresence } from "framer-motion";
 import LightboxCarousel from "@/components/ui/LightboxCarousel";
+import { motion } from "framer-motion";
+
+// --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
+const fadeIn = (delay = 0) => ({
+     hidden: { opacity: 0, y: 20 },
+     visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
+     },
+});
 
 const buildingImages = [
      {
@@ -22,7 +32,6 @@ const buildingImages = [
 ];
 
 export default function DespreNoiPage() {
-     // Starea pentru lightbox
      const [selectedImageIndex, setSelectedImageIndex] = useState<
           number | null
      >(null);
@@ -32,7 +41,8 @@ export default function DespreNoiPage() {
      };
 
      return (
-          <div className="min-h-screen bg-traian-cream">
+          // MODIFICARE 1: Am adăugat 'flex flex-col' pentru a gestiona înălțimea
+          <div className="min-h-screen bg-traian-cream flex flex-col">
                {/* --- Secțiunea Hero --- */}
                <section
                     className="bg-traian-charcoal text-white py-20 relative"
@@ -43,26 +53,38 @@ export default function DespreNoiPage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="text-center">
+                         <motion.div
+                              className="text-center"
+                              initial="hidden"
+                              animate="visible"
+                              variants={fadeIn()}
+                         >
                               <h1 className="font-serif text-4xl lg:text-6xl font-bold mb-6">
                                    Despre Hotel Traian
                               </h1>
                               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                                   Așezat în apropierea dealului Tâmpa, hotelul
-                                   nostru este diferit nu numai din punct de
-                                   vedere arhitectural, dar și ambiental.
+                                   Hotel Traian este soluția ideală pentru
+                                   șederi scurte și buget redus. O alegere
+                                   practică și accesibilă în Brașov.
                               </p>
-                         </div>
+                         </motion.div>
                     </div>
                </section>
 
                {/* --- Secțiunea de Conținut (Text + Poze) --- */}
-               <section className="py-20">
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-center">
+               {/* MODIFICARE 2: Am adăugat 'flex-1 flex items-center'. 
+          Asta forțează secțiunea să ocupe tot spațiul liber și centrează conținutul vertical. */}
+               <section className="py-20 flex-1 flex items-center">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                               {/* Coloana de Text */}
-                              <div className="lg:col-span-3">
-                                   {/* --- LOGO ADĂUGAT AICI --- */}
+                              <motion.div
+                                   className="flex flex-col justify-center"
+                                   initial="hidden"
+                                   whileInView="visible"
+                                   viewport={{ once: true, amount: 0.1 }}
+                                   variants={fadeIn(0.2)}
+                              >
                                    <Image
                                         src="/logo/logo.svg"
                                         alt="Hotel Traian Logo"
@@ -71,82 +93,55 @@ export default function DespreNoiPage() {
                                         className="mb-8"
                                    />
                                    <h2 className="font-serif text-3xl lg:text-4xl font-bold text-traian-charcoal mb-6">
-                                        O Oază de Liniște Lângă Inima Orașului
+                                        Confort și Accesibilitate
                                    </h2>
                                    <div className="space-y-6 text-gray-700 leading-relaxed text-lg">
                                         <p>
-                                             Așezat în apropierea dealului{" "}
                                              <span className="font-semibold text-traian-burgundy">
-                                                  Tâmpa
-                                             </span>
-                                             , hotelul acesta este diferit de
-                                             celelalte nu numai din punct de
-                                             vedere arhitectural, dar și
-                                             ambiental. Zona aleasă, foarte ușor
-                                             accesibilă, permite aprecierea
-                                             frumuseților oferite de natură dar
-                                             și o intimitate pe care orice
-                                             turist se așteaptă să o aibă în
-                                             scurta-i vacanță. De asemenea,
-                                             interioarelor li s-a acordat cu
-                                             generozitate spațiu suficient
-                                             pentru a te simți în largul tău.
-                                        </p>
-                                        <p>
-                                             Hotel Traian oferă cazare în 78
-                                             camere dispuse pe trei nivele,
-                                             având un total de 252 locuri de
-                                             cazare. Camerele sunt cu pat
-                                             matrimonial, cu pat dublu, cu 2 și
-                                             3 locuri, dispun de baie proprie și
-                                             televizor color. Însă există și
-                                             camere cu 2, 3 și 4 locuri la care
-                                             baia este situată pe hol.
-                                        </p>
-                                        <p>
-                                             Construcția este dotată cu centrală
-                                             termică. Fiecare cameră are baie cu
-                                             cabină de duș, TV color conectat la
-                                             rețeaua de programe difuzate prin
-                                             cablu.
-                                        </p>
-                                        <p>
-                                             Hotel Traian are o poziție
-                                             privilegiată. De aici pot fi
-                                             admirați atât Munții Bucegi, Munții
-                                             Ciucaș cât și dealul{" "}
+                                                  Hotelul Traian
+                                             </span>{" "}
+                                             este un loc de cazare ideal pentru
+                                             șederi scurte și{" "}
                                              <span className="font-semibold text-traian-burgundy">
-                                                  Tâmpa
+                                                  buget redus
                                              </span>
-                                             . De altfel, cine ajunge la Brașov
-                                             nu trebuie să rateze o vizită în
-                                             legendara Biserică (
-                                             <span className="font-semibold text-traian-burgundy">
-                                                  Biserica Neagră
-                                             </span>
-                                             ), Muzeul de istorie plasat în
-                                             Centrul istoric al Brașovului,
-                                             Prima Școală Românească situată în
-                                             Șcheii Brașovului de asemenea
-                                             vestitele turnuri, Turnul
-                                             Țesătorilor și Turnul Alb.
+                                             . Curat, funcțional și cu acces
+                                             facil la toate punctele de interes.
                                         </p>
+
                                         <p>
-                                             Pasionații drumețiilor vor fi
-                                             încântați și de celelalte atracții
-                                             ale zonei: traseele ce pornesc spre
-                                             Piatra Craiului, Poiana Brașov și
-                                             Munții Bucegi.
+                                             Hotelul oferă cazare în 78 camere
+                                             dispuse pe patru nivele, având un
+                                             total de 252 locuri de cazare.
+                                             Camerele duble sunt cu pat
+                                             matrimonial sau twin. Camerele cu 2
+                                             și 3 locuri dispun de baie proprie,
+                                             televizor și frigider. Pentru
+                                             camerele cu 4 locuri, baia este
+                                             situată pe hol.
+                                        </p>
+
+                                        <p>
+                                             Hotelul Traian este o alegere
+                                             practică pentru cei care caută
+                                             funcționalitate și economie.
+                                             Confort de bază la tarif minim.
                                         </p>
                                    </div>
-                              </div>
+                              </motion.div>
 
                               {/* Coloana de Imagini */}
-                              <div className="lg:col-span-2">
-                                   <div className="flex flex-col gap-4 md:grid md:grid-cols-2 md:gap-4 md:h-[450px]">
-                                        {/* Imaginea Mare (Verticală) */}
+                              <motion.div
+                                   className="w-full"
+                                   initial="hidden"
+                                   whileInView="visible"
+                                   viewport={{ once: true, amount: 0.1 }}
+                                   variants={fadeIn(0.4)}
+                              >
+                                   <div className="flex flex-col gap-6 lg:grid lg:grid-cols-2 lg:grid-rows-2 lg:gap-4 lg:h-[500px]">
+                                        {/* Imaginea Mare */}
                                         <div
-                                             className="w-full h-80 md:h-full md:col-span-1 md:row-span-2 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="relative h-64 sm:h-80 lg:h-auto lg:row-span-2 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(0)
                                              }
@@ -154,14 +149,15 @@ export default function DespreNoiPage() {
                                              <Image
                                                   src={buildingImages[0].src}
                                                   alt={buildingImages[0].alt}
-                                                  width={600}
-                                                  height={800}
-                                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  fill
+                                                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  sizes="(max-width: 1024px) 100vw, 50vw"
                                              />
                                         </div>
-                                        {/* Imaginea Mică (Sus) */}
+
+                                        {/* Imaginea Mică 1 */}
                                         <div
-                                             className="w-full h-64 md:h-full md:col-span-1 md:row-span-1 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="relative h-64 sm:h-80 lg:h-auto rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(1)
                                              }
@@ -169,14 +165,15 @@ export default function DespreNoiPage() {
                                              <Image
                                                   src={buildingImages[1].src}
                                                   alt={buildingImages[1].alt}
-                                                  width={600}
-                                                  height={400}
-                                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  fill
+                                                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  sizes="(max-width: 1024px) 100vw, 50vw"
                                              />
                                         </div>
-                                        {/* Imaginea Mică (Jos) */}
+
+                                        {/* Imaginea Mică 2 */}
                                         <div
-                                             className="w-full h-64 md:h-full md:col-span-1 md:row-span-1 rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
+                                             className="relative h-64 sm:h-80 lg:h-auto rounded-2xl shadow-xl overflow-hidden group cursor-pointer"
                                              onClick={() =>
                                                   setSelectedImageIndex(2)
                                              }
@@ -184,13 +181,13 @@ export default function DespreNoiPage() {
                                              <Image
                                                   src={buildingImages[2].src}
                                                   alt={buildingImages[2].alt}
-                                                  width={600}
-                                                  height={400}
-                                                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  fill
+                                                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                                                  sizes="(max-width: 1024px) 100vw, 50vw"
                                              />
                                         </div>
                                    </div>
-                              </div>
+                              </motion.div>
                          </div>
                     </div>
                </section>
@@ -205,30 +202,36 @@ export default function DespreNoiPage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                         <h2 className="font-serif text-3xl font-bold text-white mb-4">
-                              Sunteți Gata să Ne Vizitați?
-                         </h2>
-                         <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
-                              Rezervați-vă șederea acum sau contactați-ne pentru
-                              orice întrebare. Echipa noastră este gata să vă
-                              ajute!
-                         </p>
-                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                              <Button href="/contact" variant="secondary">
-                                   Rezervă Acum
-                              </Button>
-                              <Button
-                                   href="/contact"
-                                   variant="outline"
-                                   className="border-white text-white hover:bg-white hover:text-traian-burgundy"
-                              >
-                                   Trimite un Mesaj
-                              </Button>
-                         </div>
+                         <motion.div
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.2)}
+                         >
+                              <h2 className="font-serif text-3xl font-bold text-white mb-4">
+                                   Sunteți Gata să Ne Vizitați?
+                              </h2>
+                              <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
+                                   Rezervați-vă șederea acum sau contactați-ne
+                                   pentru orice întrebare. Echipa noastră este
+                                   gata să vă ajute!
+                              </p>
+                              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                   <Button href="/contact" variant="secondary">
+                                        Rezervă Acum
+                                   </Button>
+                                   <Button
+                                        href="/contact"
+                                        variant="outline"
+                                        className="border-white text-white hover:bg-white hover:text-traian-burgundy"
+                                   >
+                                        Trimite un Mesaj
+                                   </Button>
+                              </div>
+                         </motion.div>
                     </div>
                </section>
 
-               {/* --- NOU: Componenta Lightbox (mult mai curată) --- */}
                <LightboxCarousel
                     images={buildingImages}
                     show={selectedImageIndex !== null}

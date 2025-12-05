@@ -179,15 +179,6 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                         <div className="pt-8 border-t border-gray-100 flex flex-wrap gap-6 md:gap-10 justify-center md:justify-start opacity-70 mt-auto">
                                              <div
                                                   className="flex items-center gap-2"
-                                                  title="WiFi Gratuit"
-                                             >
-                                                  <Wifi className="w-5 h-5 text-traian-burgundy" />{" "}
-                                                  <span className="text-sm">
-                                                       WiFi
-                                                  </span>
-                                             </div>
-                                             <div
-                                                  className="flex items-center gap-2"
                                                   title="TV Cablu"
                                              >
                                                   <Tv className="w-5 h-5 text-traian-burgundy" />{" "}

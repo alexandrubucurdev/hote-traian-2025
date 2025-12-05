@@ -1,14 +1,14 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
-import { Metadata } from "next";
+import { motion } from "framer-motion";
 import {
      Users,
      Maximize2,
      ArrowRight,
-     Wifi,
      Tv,
      Bath,
-     Wind,
      Refrigerator,
      Info,
      AlertTriangle,
@@ -16,15 +16,19 @@ import {
 import { rooms } from "@/lib/data/rooms";
 import Button from "@/components/ui/Button";
 
-export const metadata: Metadata = {
-     title: "Camere & Tarife | Hotel Traian Brașov",
-     description:
-          "Descoperă gama completă de camere ale Hotel Traian din Brașov. Camere standard, superioare, triple și suite executive cu facilități moderne.",
-};
+// --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
+const fadeIn = (delay = 0) => ({
+     hidden: { opacity: 0, y: 20 },
+     visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
+     },
+});
 
 export default function CamerePage() {
      return (
-          <div className="min-h-screen bg-traian-cream">
+          <div className="min-h-screen bg-traian-cream flex flex-col">
                {/* Header */}
                <section
                     className="bg-traian-charcoal text-white py-20 relative"
@@ -35,27 +39,35 @@ export default function CamerePage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="text-center">
+                         <motion.div
+                              className="text-center"
+                              initial="hidden"
+                              animate="visible"
+                              variants={fadeIn()}
+                         >
                               <h1 className="font-serif text-4xl lg:text-6xl font-bold mb-6">
                                    Camerele Noastre
                               </h1>
                               <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-                                   Alege camera perfectă pentru sejurul tău în
-                                   Brașov. Toate camerele sunt dotate cu
-                                   facilități moderne pentru confortul maxim.
+                                   Toate camerele sunt dotate cu facilități de
+                                   bază.
                               </p>
-                         </div>
+                         </motion.div>
                     </div>
                </section>
 
                {/* Rooms Grid */}
-               <section className="py-20">
+               <section className="py-20 flex-1">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <div className="flex flex-wrap justify-center gap-8">
                               {rooms.map((room, index) => (
-                                   <div
+                                   <motion.div
                                         key={room.id}
                                         className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 group w-full lg:max-w-xl"
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, amount: 0.1 }}
+                                        variants={fadeIn(0.2)}
                                    >
                                         {/* Image */}
                                         <div className="relative h-64 overflow-hidden">
@@ -114,12 +126,6 @@ export default function CamerePage() {
 
                                              {/* Key Amenities Icons */}
                                              <div className="flex items-center space-x-4 mb-6">
-                                                  <div className="flex items-center space-x-1 text-traian-burgundy">
-                                                       <Wifi className="h-4 w-4" />
-                                                       <span className="text-xs">
-                                                            WiFi
-                                                       </span>
-                                                  </div>
                                                   <div className="flex items-center space-x-1 text-traian-burgundy">
                                                        <Tv className="h-4 w-4" />
                                                        <span className="text-xs">
@@ -186,11 +192,17 @@ export default function CamerePage() {
                                                   </Button>
                                              </div>
                                         </div>
-                                   </div>
+                                   </motion.div>
                               ))}
                          </div>
 
-                         <div className="mt-20 bg-white rounded-2xl shadow-lg p-8 lg:p-12 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-t-4 border-traian-gold">
+                         <motion.div
+                              className="mt-20 bg-white rounded-2xl shadow-lg p-8 lg:p-12 transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 border-t-4 border-traian-gold"
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.4)}
+                         >
                               <h3 className="font-serif text-3xl font-bold text-traian-charcoal mb-8 text-center">
                                    Informații Utile & Politici
                               </h3>
@@ -204,7 +216,7 @@ export default function CamerePage() {
                                    <li className="flex items-start">
                                         <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
                                         <span>
-                                             Ziua hotelieră începe la ora 12:00
+                                             Ziua hotelieră începe la ora 14:00
                                              și se termină a doua zi la ora
                                              12:00.
                                         </span>
@@ -237,7 +249,7 @@ export default function CamerePage() {
                                         </span>
                                    </li>
                               </ul>
-                         </div>
+                         </motion.div>
                     </div>
                </section>
 
@@ -251,29 +263,36 @@ export default function CamerePage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                         <h2 className="font-serif text-3xl font-bold text-white mb-4">
-                              Ai nevoie de ajutor la alegerea camerei?
-                         </h2>
-                         <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
-                              Echipa noastră este disponibilă 24/7 pentru a vă
-                              ajuta să alegeți camera perfectă pentru sejurul
-                              dumneavoastră.
-                         </p>
-                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                              <a
-                                   href="tel:+40746332414"
-                                   className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-6 py-3 text-base cursor-pointer"
-                              >
-                                   Sună la Recepție
-                              </a>
-                              <Button
-                                   href="/contact"
-                                   variant="outline"
-                                   className="border-white text-white hover:bg-white hover:text-traian-burgundy"
-                              >
-                                   Trimite un Mesaj
-                              </Button>
-                         </div>
+                         <motion.div
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.2)}
+                         >
+                              <h2 className="font-serif text-3xl font-bold text-white mb-4">
+                                   Ai nevoie de ajutor la alegerea camerei?
+                              </h2>
+                              <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
+                                   Echipa noastră este disponibilă 24/7 pentru a
+                                   vă ajuta să alegeți camera perfectă pentru
+                                   sejurul dumneavoastră.
+                              </p>
+                              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                   <a
+                                        href="tel:+40746332414"
+                                        className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-6 py-3 text-base cursor-pointer"
+                                   >
+                                        Sună la Recepție
+                                   </a>
+                                   <Button
+                                        href="/contact"
+                                        variant="outline"
+                                        className="border-white text-white hover:bg-white hover:text-traian-burgundy"
+                                   >
+                                        Trimite un Mesaj
+                                   </Button>
+                              </div>
+                         </motion.div>
                     </div>
                </section>
           </div>

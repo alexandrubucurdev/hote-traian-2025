@@ -17,6 +17,16 @@ import {
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 
+// --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
+const fadeIn = (delay = 0) => ({
+     hidden: { opacity: 0, y: 20 },
+     visible: {
+          opacity: 1,
+          y: 0,
+          transition: { duration: 0.6, ease: "easeOut", delay },
+     },
+});
+
 const localAttractions = [
      {
           name: "Centrul Istoric",
@@ -76,7 +86,7 @@ const localAttractions = [
           name: "Parc Aventura Brașov",
           distance: "10 min",
           type: "car",
-          Icon: Trees, // Am schimbat iconița în 'Trees' (dacă o ai importată) sau poți păstra 'Landmark'
+          Icon: Trees,
           description: "Cel mai mare parc de aventură din estul Europei.",
           imageUrl:
                "https://placehold.co/600x400/2F855A/FFFFFF?text=Parc+Aventura",
@@ -131,6 +141,15 @@ const regionalAttractions = [
                "https://placehold.co/600x400/8B1538/FFFFFF?text=Piatra+Craiului",
      },
      {
+          name: "Canionul 7 Scări",
+          distance: "15 min",
+          type: "car",
+          Icon: Mountain,
+          description: "Traseu spectaculos prin defileu, cu scări și cascade.",
+          imageUrl:
+               "https://placehold.co/600x400/D4AF37/FFFFFF?text=Canionul+7+Scari",
+     },
+     {
           name: "Mănăstirea Sâmbăta",
           distance: "90 min",
           type: "car",
@@ -139,32 +158,11 @@ const regionalAttractions = [
           imageUrl:
                "https://placehold.co/600x400/2D3748/FFFFFF?text=Mănăstirea+Sâmbăta",
      },
-     {
-          name: "Canionul 7 Scări",
-          distance: "15 min",
-          type: "car",
-          Icon: Mountain, // Recomand iconița 'Mountain' sau 'Trees' pentru natură
-          description: "Traseu spectaculos prin defileu, cu scări și cascade.",
-          imageUrl:
-               "https://placehold.co/600x400/D4AF37/FFFFFF?text=Canionul+7+Scari",
-     },
 ];
-
-const cardVariants = {
-     hidden: { opacity: 0, y: 30 },
-     visible: {
-          opacity: 1,
-          y: 0,
-          transition: {
-               duration: 0.6,
-               ease: "easeOut",
-          },
-     },
-};
 
 export default function LocatiePage() {
      return (
-          <div className="min-h-screen bg-traian-cream">
+          <div className="min-h-screen bg-traian-cream flex flex-col">
                {/* --- Secțiunea Hero --- */}
                <section
                     className="bg-traian-charcoal text-white py-20 relative"
@@ -175,7 +173,12 @@ export default function LocatiePage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="text-center">
+                         <motion.div
+                              className="text-center"
+                              initial="hidden"
+                              animate="visible"
+                              variants={fadeIn()}
+                         >
                               <h1 className="font-serif text-4xl lg:text-6xl font-bold mb-6">
                                    Locație și Atracții
                               </h1>
@@ -184,14 +187,20 @@ export default function LocatiePage() {
                                    explorați comorile pe care Brașovul și
                                    împrejurimile le au de oferit.
                               </p>
-                         </div>
+                         </motion.div>
                     </div>
                </section>
 
                {/* --- Secțiunea Hartă și Acces --- */}
                <section className="py-20 bg-white">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                         <motion.div
+                              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.2)}
+                         >
                               {/* Harta */}
                               <div className="h-96 lg:h-full w-full rounded-2xl overflow-hidden shadow-2xl">
                                    <iframe
@@ -259,14 +268,20 @@ export default function LocatiePage() {
                                         </div>
                                    </div>
                               </div>
-                         </div>
+                         </motion.div>
                     </div>
                </section>
 
                {/* --- Secțiunea Atracții Locale --- */}
                <section className="py-20 bg-traian-cream">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="text-center mb-16">
+                         <motion.div
+                              className="text-center mb-16"
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn()}
+                         >
                               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
                                    Atracții Locale
                               </h2>
@@ -274,17 +289,17 @@ export default function LocatiePage() {
                                    Descoperiți farmecul Brașovului la doar
                                    câțiva pași distanță.
                               </p>
-                         </div>
+                         </motion.div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                         <div className="flex flex-wrap justify-center gap-8">
                               {localAttractions.map((item, index) => (
                                    <motion.div
                                         key={item.name}
-                                        className="bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                                        variants={cardVariants}
+                                        className="bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full max-w-sm"
                                         initial="hidden"
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.3 }}
+                                        variants={fadeIn(0.2)}
                                    >
                                         <div className="relative h-64 w-full">
                                              <Image
@@ -319,9 +334,15 @@ export default function LocatiePage() {
                </section>
 
                {/* --- Secțiunea Atracții Regionale --- */}
-               <section className="py-20 bg-white">
+               <section className="py-20 bg-white flex-1">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         <div className="text-center mb-16">
+                         <motion.div
+                              className="text-center mb-16"
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn()}
+                         >
                               <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
                                    Excursii de o Zi
                               </h2>
@@ -329,17 +350,17 @@ export default function LocatiePage() {
                                    Profitați de locația noastră pentru a explora
                                    comorile din împrejurimile Brașovului.
                               </p>
-                         </div>
+                         </motion.div>
 
-                         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                         <div className="flex flex-wrap justify-center gap-8">
                               {regionalAttractions.map((item, index) => (
                                    <motion.div
                                         key={item.name}
-                                        className="bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2"
-                                        variants={cardVariants}
+                                        className="bg-white rounded-2xl shadow-lg overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 w-full max-w-sm"
                                         initial="hidden"
                                         whileInView="visible"
                                         viewport={{ once: true, amount: 0.3 }}
+                                        variants={fadeIn(0.2)}
                                    >
                                         <div className="relative h-64 w-full">
                                              <Image
@@ -379,26 +400,33 @@ export default function LocatiePage() {
                     }}
                >
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                         <h2 className="font-serif text-3xl font-bold text-white mb-4">
-                              Planificați-vă Aventura
-                         </h2>
-                         <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
-                              Echipa noastră vă stă la dispoziție pentru a vă
-                              oferi indicații și sfaturi pentru a explora
-                              regiunea.
-                         </p>
-                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-                              <Button href="/camere" variant="secondary">
-                                   Vezi Camerele
-                              </Button>
-                              <Button
-                                   href="/contact"
-                                   variant="outline"
-                                   className="border-white text-white hover:bg-white hover:text-traian-burgundy"
-                              >
-                                   Contactează-ne
-                              </Button>
-                         </div>
+                         <motion.div
+                              initial="hidden"
+                              whileInView="visible"
+                              viewport={{ once: true, amount: 0.1 }}
+                              variants={fadeIn(0.2)}
+                         >
+                              <h2 className="font-serif text-3xl font-bold text-white mb-4">
+                                   Planificați-vă Aventura
+                              </h2>
+                              <p className="text-traian-gold mb-8 max-w-2xl mx-auto">
+                                   Echipa noastră vă stă la dispoziție pentru a
+                                   vă oferi indicații și sfaturi pentru a
+                                   explora regiunea.
+                              </p>
+                              <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                   <Button href="/camere" variant="secondary">
+                                        Vezi Camerele
+                                   </Button>
+                                   <Button
+                                        href="/contact"
+                                        variant="outline"
+                                        className="border-white text-white hover:bg-white hover:text-traian-burgundy"
+                                   >
+                                        Contactează-ne
+                                   </Button>
+                              </div>
+                         </motion.div>
                     </div>
                </section>
           </div>

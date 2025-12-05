@@ -18,7 +18,7 @@ export const rooms: Room[] = [
           id: "camera-matrimoniala",
           name: "Camera Matrimonială",
           description:
-               "Camera noastră Matrimonială oferă confort și funcționalitate într-un spațiu elegant de 21 mp. Dotată cu toate facilitățile moderne necesare pentru un sejur plăcut în Brașov.",
+               "Camera noastră matrimonială oferă confort și funcționalitate într-un spațiu primitor de 21 mp.",
           shortDescription:
                "Cameră confortabilă cu toate facilitățile esențiale",
           capacity: 2,
@@ -26,7 +26,6 @@ export const rooms: Room[] = [
           price: 140,
           amenities: [
                "Pat matrimonial confortabil",
-               "WiFi gratuit",
                "TV",
                "Televiziune prin cablu",
                "Frigider",
@@ -53,14 +52,14 @@ export const rooms: Room[] = [
           id: "camera-dubla-twin",
           name: "Camera Dublă Twin",
           description:
-               "Camera noastră Dublă Twin de 21 mp oferă confort și funcționalitate într-un spațiu elegant. Dotată cu toate facilitățile moderne necesare pentru un sejur plăcut în Brașov.",
-          shortDescription: "Confort și funcționalitate într-un spațiu elegant",
+               "Camera noastră dublă oferă confort și funcționalitate într-un spațiu primitor de 21 mp.",
+          shortDescription:
+               "Confort și funcționalitate într-un spațiu primitor",
           capacity: 2,
           size: 21,
           price: 140,
           amenities: [
                "Două paturi single",
-               "WiFi gratuit",
                "TV",
                "Televiziune prin cablu",
                "Frigider",
@@ -95,7 +94,6 @@ export const rooms: Room[] = [
           price: 180,
           amenities: [
                "Trei paturi single",
-               "WiFi gratuit",
                "TV",
                "Televiziune prin cablu",
                "Frigider",
@@ -122,7 +120,7 @@ export const rooms: Room[] = [
           id: "camera-cvadrupla",
           name: "Camera Cvadruplă",
           description:
-               "Camera noastră Cvadruplă de 21 mp oferă spațiu generos și confort pentru familii sau grupuri. Dotată cu toate facilitățile moderne pentru un sejur plăcut în Brașov.",
+               "Camera noastră cvadruplă de 21 mp oferă spațiu generos pentru familii, grupuri sau muncitori. Acest tip de cameră nu dispune de baie proprie.",
           shortDescription:
                "Spațiu generos și confort pentru familii și grupuri",
           capacity: 4,
@@ -130,7 +128,6 @@ export const rooms: Room[] = [
           price: 150,
           amenities: [
                "Patru paturi single",
-               "WiFi gratuit",
                "TV",
                "Televiziune prin cablu",
                "Frigider",

@@ -14,7 +14,7 @@ const navigation = [
      { name: "Galerie", href: "/galerie" },
      { name: "Despre Noi", href: "/despre" },
      { name: "Locația", href: "/locatie" },
-     { name: "Acționari", href: "/actionari" },
+     { name: "Convocator Acționari", href: "/actionari" },
      { name: "Contact", href: "/contact" },
 ];
 

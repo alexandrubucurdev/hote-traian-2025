@@ -3,15 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FileText, Calendar, MapPin } from "lucide-react";
-
-const fadeIn = (delay = 0) => ({
-     hidden: { opacity: 0, y: 20 },
-     visible: {
-          opacity: 1,
-          y: 0,
-          transition: { duration: 0.6, ease: "easeOut", delay },
-     },
-});
+import { fadeIn } from "@/lib/animations";
 
 export default function ActionariPage() {
      return (

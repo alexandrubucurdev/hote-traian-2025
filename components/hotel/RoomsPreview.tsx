@@ -1,8 +1,12 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import { Users, ArrowRight, Maximize2 } from "lucide-react";
 import { getPopularRooms } from "@/lib/data/rooms";
 import Button from "@/components/ui/Button";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/lib/animations";
 
 export default function RoomsPreview() {
      const popularRooms = getPopularRooms();
@@ -10,8 +14,14 @@ export default function RoomsPreview() {
      return (
           <section className="py-20 bg-white">
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Header */}
-                    <div className="text-center mb-16">
+                    {/* Header - Animat primul (Delay 0) */}
+                    <motion.div
+                         className="text-center mb-16"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0)}
+                    >
                          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-6">
                               Camerele Noastre
                          </h2>
@@ -20,11 +30,17 @@ export default function RoomsPreview() {
                               dotată cu facilități moderne pentru confortul
                               dumneavoastră.
                          </p>
-                    </div>
+                    </motion.div>
 
-                    {/* Rooms Grid */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-                         {popularRooms.map((room, index) => (
+                    {/* Rooms Grid - Animat cu Delay 0.2s */}
+                    <motion.div
+                         className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0.2)}
+                    >
+                         {popularRooms.map((room) => (
                               <div
                                    key={room.id}
                                    className="group relative bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300"
@@ -98,7 +114,7 @@ export default function RoomsPreview() {
                                                   {room.amenities.length >
                                                        3 && (
                                                        <span className="text-traian-burgundy text-xs px-3 py-1">
-                                                            +
+                                                            +{" "}
                                                             {room.amenities
                                                                  .length -
                                                                  3}{" "}
@@ -119,15 +135,21 @@ export default function RoomsPreview() {
                                    </div>
                               </div>
                          ))}
-                    </div>
+                    </motion.div>
 
-                    {/* View All Rooms CTA */}
-                    <div className="text-center">
+                    {/* View All Rooms CTA - Animat ultimul (Delay 0.4s) */}
+                    <motion.div
+                         className="text-center"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0.4)}
+                    >
                          <Button href="/camere" variant="outline" size="lg">
                               Vezi Toate Camerele
                               <ArrowRight className="ml-2 h-5 w-5" />
                          </Button>
-                    </div>
+                    </motion.div>
                </div>
           </section>
      );

@@ -3,18 +3,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import {
-     Phone,
-     Mail,
-     MapPin,
-     Clock,
-     Wifi,
-     Car,
-     Coffee,
-     Star,
-     Map,
-} from "lucide-react";
-import Logo from "@/components/ui/Logo";
+import { Phone, Mail, MapPin, Clock, Wifi, Car, Star, Map } from "lucide-react";
 
 export default function Footer() {
      return (
@@ -31,10 +20,9 @@ export default function Footer() {
                                    className={`mb-6`}
                               />
                               <p className="text-gray-300 mb-4 text-sm leading-relaxed">
-                                   Hotel Traian vă oferă o experiență de neuitat
-                                   în inima Brașovului, la doar câțiva pași de
-                                   Centrul Vechi și principalele atracții
-                                   turistice.
+                                   Hotel Traian este o alegere practică pentru
+                                   cei care caută funcționalitate și economie.
+                                   Confort de bază la tarif minim.
                               </p>
                               <div className="flex items-center space-x-1 text-traian-gold">
                                    {[...Array(1)].map((_, i) => (
@@ -55,7 +43,7 @@ export default function Footer() {
                                    Contact
                               </h3>
                               <div className="space-y-3 text-sm">
-                                   {/* Secțiunea Telefon - Iconiță centrată */}
+                                   {/* Secțiunea Telefon */}
                                    <div className="flex items-start space-x-3">
                                         <Phone className="h-4 w-4 text-traian-gold" />
                                         <div className="flex flex-col">
@@ -77,7 +65,7 @@ export default function Footer() {
                                         </div>
                                    </div>
 
-                                   {/* Secțiunea E-mail (Actualizată conform snippet-ului anterior) */}
+                                   {/* Secțiunea E-mail */}
                                    <div className="flex items-center space-x-3">
                                         <Mail className="h-4 w-4 text-traian-gold" />
                                         <div>
@@ -180,12 +168,23 @@ export default function Footer() {
                          </div>
                     </div>
 
-                    {/* Bottom Bar */}
+                    {/* Bottom Bar - MODIFICAT: Elemente la capete (justify-between) */}
                     <div className="border-t border-gray-700 mt-8 pt-8">
-                         <div className="flex flex-col md:flex-row justify-center items-center text-sm">
-                              <div className="text-gray-400  mb-4 md:mb-0">
+                         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+                              {/* Partea Stângă: Copyright */}
+                              <div className="text-center md:text-left mb-4 md:mb-0">
                                    © {new Date().getFullYear()} Hotel Traian
                                    Brașov. Toate drepturile rezervate.
+                              </div>
+
+                              {/* Partea Dreaptă: Termeni */}
+                              <div>
+                                   <Link
+                                        href="/termeni"
+                                        className="hover:text-traian-gold transition-colors"
+                                   >
+                                        Termeni și Condiții
+                                   </Link>
                               </div>
                          </div>
                     </div>

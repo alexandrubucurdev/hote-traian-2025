@@ -1,12 +1,22 @@
+"use client";
+
 import React from "react";
 import { hotelAmenities } from "@/lib/data/amenities";
+import { motion } from "framer-motion";
+import { fadeIn } from "@/lib/animations";
 
 export default function AmenitiesSection() {
      return (
           <section className="py-20 bg-traian-cream">
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Header */}
-                    <div className="text-center mb-16">
+                    {/* Header - Animat primul (Delay 0) */}
+                    <motion.div
+                         className="text-center mb-16"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0)}
+                    >
                          <h2 className="font-serif text-4xl lg:text-5xl font-bold text-traian-charcoal mb-8">
                               Facilitățile Hotelului
                          </h2>
@@ -45,8 +55,16 @@ export default function AmenitiesSection() {
                               Vă oferim toate facilitățile necesare pentru un
                               sejur confortabil în Brașov.
                          </p>
-                    </div>
-                    <div className="flex flex-wrap justify-center gap-8">
+                    </motion.div>
+
+                    {/* Amenities Grid - Animat cu Delay 0.2s */}
+                    <motion.div
+                         className="flex flex-wrap justify-center gap-8"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0.2)}
+                    >
                          {hotelAmenities.map((amenity, index) => {
                               const IconComponent = amenity.icon;
                               return (
@@ -71,10 +89,16 @@ export default function AmenitiesSection() {
                                    </div>
                               );
                          })}
-                    </div>
+                    </motion.div>
 
-                    {/* Additional Info */}
-                    <div className="mt-16 bg-white rounded-2xl p-8 shadow-lg">
+                    {/* Additional Info - Animat ultimul (Delay 0.4s) */}
+                    <motion.div
+                         className="mt-16 bg-white rounded-2xl p-8 shadow-lg"
+                         initial="hidden"
+                         whileInView="visible"
+                         viewport={{ once: true, amount: 0.1 }}
+                         variants={fadeIn(0.4)}
+                    >
                          <div className="text-center">
                               <h3 className="font-serif text-2xl font-bold text-traian-charcoal mb-4">
                                    De Ce Să Alegeți Hotel Traian?
@@ -106,7 +130,7 @@ export default function AmenitiesSection() {
                                    </div>
                               </div>
                          </div>
-                    </div>
+                    </motion.div>
                </div>
           </section>
      );
