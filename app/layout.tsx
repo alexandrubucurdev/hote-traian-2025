@@ -21,13 +21,17 @@ export const metadata: Metadata = {
 
      title: {
           default: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
-          template: "%s | Hotel Traian Brașov",
+          template: "%s | Hotel Traian Brașov", // Asta ajută paginile interne (ex: "Camere | Hotel Traian...")
      },
      description:
           "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi. Camere dotate modern, WiFi gratuit, parcare inclusă.",
+
+     // Iconițele pentru tab-ul browserului pot rămâne SVG
      icons: {
           icon: "/logo/logo.svg",
+          apple: "/logo-og.jpg", // Opțional, dar recomandat pentru iPhone
      },
+
      keywords: [
           "hotel braşov",
           "cazare braşov",
@@ -37,25 +41,11 @@ export const metadata: Metadata = {
           "cazare muncitori",
           "cazare ieftina brasov",
      ],
-     authors: [{ name: "Hotel Traian Brașov" }],
+
+     authors: [{ name: "Hotel Traian Brașov", url: DOMAIN_URL }],
      creator: "Hotel Traian Brașov",
-     publisher: "Hotel Traian Brașov",
 
-     robots: {
-          index: true,
-          follow: true,
-     },
-
-     verification: {
-          google: "codul-tau-de-la-google-search-console",
-     },
-
-     formatDetection: {
-          email: true,
-          address: false,
-          telephone: true,
-     },
-
+     // Setări Open Graph pentru Facebook / WhatsApp / LinkedIn
      openGraph: {
           title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
           description:
@@ -64,14 +54,38 @@ export const metadata: Metadata = {
           siteName: "Hotel Traian Brașov",
           images: [
                {
-                    url: "/logo/bg.webp",
+                    url: "/logo-og.jpg", // AICI trebuie să pui un JPG/PNG de 1200x630
                     width: 1200,
                     height: 630,
-                    alt: "Hotel Traian Brașov - Cazare de Calitate",
+                    alt: "Hotel Traian Brașov",
                },
           ],
           locale: "ro_RO",
           type: "website",
+     },
+
+     // Setări pentru Twitter (X) - preia automat imaginea din OpenGraph dacă nu specifici alta
+     twitter: {
+          card: "summary_large_image",
+          title: "Hotel Traian Brașov",
+          description: "Cazare confortabilă în Brașov.",
+          images: ["/logo-og.jpg"], // Aceeași imagine ca mai sus
+     },
+
+     robots: {
+          index: true,
+          follow: true,
+          googleBot: {
+               index: true,
+               follow: true,
+               "max-video-preview": -1,
+               "max-image-preview": "large",
+               "max-snippet": -1,
+          },
+     },
+
+     verification: {
+          google: "jlOPy-UN0ti_gEu5nbgI7r3WkT1X9vrwKPLWKINiiJk", // Nu uita să pui codul real aici
      },
 };
 
