@@ -1,8 +1,9 @@
 "use client"; // Necesar pentru animații și formular
 
 import React, { useState } from "react";
-import Link from "next/link"; // Importăm Link pentru navigare internă
+import Link from "next/link";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
 import {
      Phone,
      Mail,
@@ -10,30 +11,41 @@ import {
      Send,
      Building,
      FileCheck,
-     FileText, // Am adăugat iconița pentru document
+     FileText,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-// --- Schema de validare pentru formular ---
+// --- Schema de validare (Telefon Obligatoriu) ---
 const contactSchema = z.object({
      name: z.string().min(3, "Numele este obligatoriu"),
      email: z.string().email("Adresă de e-mail invalidă"),
-     phone: z.string().optional(),
+     phone: z
+          .string()
+          .min(10, "Numărul de telefon este obligatoriu (minim 10 cifre)"),
      message: z.string().min(10, "Mesajul trebuie să aibă minim 10 caractere"),
 });
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-// --- Componentă FormInput ---
-const FormInput = ({ id, label, register, error, type = "text" }: any) => (
+// --- Componentă FormInput ACTUALIZATĂ ---
+// Acum acceptă `...props` pentru a permite `autoComplete`
+const FormInput = ({
+     id,
+     label,
+     register,
+     error,
+     type = "text",
+     ...props
+}: any) => (
      <div className="relative">
           <input
                id={id}
                type={type}
                {...register(id)}
+               {...props} // AICI e modificarea: transmitem autoComplete mai departe
                placeholder=" "
                className={`block w-full px-4 py-3 bg-transparent border-0 border-b-2 
             appearance-none text-traian-charcoal 
@@ -79,11 +91,12 @@ const FormInput = ({ id, label, register, error, type = "text" }: any) => (
 );
 
 // --- Componentă FormTextarea ---
-const FormTextarea = ({ id, label, register, error }: any) => (
+const FormTextarea = ({ id, label, register, error, ...props }: any) => (
      <div className="relative">
           <textarea
                id={id}
                {...register(id)}
+               {...props}
                rows={4}
                placeholder=" "
                className={`block w-full px-4 py-3 bg-transparent border-0 border-b-2 
@@ -140,22 +153,46 @@ const fadeIn = (delay = 0) => ({
 });
 
 export default function ContactPage() {
+     const [submitStatus, setSubmitStatus] = useState<
+          "idle" | "success" | "error"
+     >("idle");
+
      const {
           register,
           handleSubmit,
+          reset,
           formState: { errors, isSubmitting },
      } = useForm<ContactFormValues>({
           resolver: zodResolver(contactSchema),
      });
 
-     const onSubmit = (data: ContactFormValues) => {
-          return new Promise((resolve) => {
-               setTimeout(() => {
-                    console.log(data);
-                    alert("Mesajul a fost trimis! (simulare)");
-                    resolve(true);
-               }, 1000);
-          });
+     const onSubmit = async (data: ContactFormValues) => {
+          setSubmitStatus("idle");
+
+          // --- CONFIGURARE EMAILJS ---
+          const SERVICE_ID = "service_rmj1tif";
+          const TEMPLATE_ID = "template_xlaed3z";
+          const PUBLIC_KEY = "ENUV4maDTByaChJ5l";
+
+          try {
+               await emailjs.send(
+                    SERVICE_ID,
+                    TEMPLATE_ID,
+                    {
+                         name: data.name,
+                         email: data.email,
+                         phone: data.phone,
+                         message: data.message,
+                    },
+                    PUBLIC_KEY
+               );
+
+               setSubmitStatus("success");
+               reset();
+          } catch (error) {
+               console.error("Eroare la trimitere:", error);
+               setSubmitStatus("error");
+          }
      };
 
      return (
@@ -309,7 +346,7 @@ export default function ContactPage() {
                                                   </div>
                                              </div>
 
-                                             {/* --- AICI AM ADĂUGAT BUTONUL CĂTRE TERMENI --- */}
+                                             {/* Link către Termeni */}
                                              <div className="flex items-start group pt-2">
                                                   <FileText className="h-5 w-5 text-traian-burgundy mr-4 flex-shrink-0 mt-1" />
                                                   <div>
@@ -352,6 +389,7 @@ export default function ContactPage() {
                                                        label="Nume și Prenume"
                                                        register={register}
                                                        error={errors.name}
+                                                       autoComplete="name" // Adăugat pentru Autofill
                                                   />
                                                   <FormInput
                                                        id="email"
@@ -359,13 +397,15 @@ export default function ContactPage() {
                                                        type="email"
                                                        register={register}
                                                        error={errors.email}
+                                                       autoComplete="email" // Adăugat pentru Autofill
                                                   />
                                                   <FormInput
                                                        id="phone"
-                                                       label="Număr de Telefon (Opțional)"
+                                                       label="Număr de Telefon"
                                                        type="tel"
                                                        register={register}
                                                        error={errors.phone}
+                                                       autoComplete="tel" // Adăugat pentru Autofill
                                                   />
                                                   <FormTextarea
                                                        id="message"
@@ -393,6 +433,43 @@ export default function ContactPage() {
                                                        </>
                                                   )}
                                              </Button>
+
+                                             {/* --- MESAJE DE SUCCES / EROARE --- */}
+                                             {submitStatus === "success" && (
+                                                  <motion.p
+                                                       initial={{
+                                                            opacity: 0,
+                                                            y: 10,
+                                                       }}
+                                                       animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                       }}
+                                                       className="text-green-600 text-center mt-4 font-medium bg-green-50 p-3 rounded-lg border border-green-200"
+                                                  >
+                                                       Mesajul tău a fost trimis
+                                                       cu succes! Te vom
+                                                       contacta în curând.
+                                                  </motion.p>
+                                             )}
+                                             {submitStatus === "error" && (
+                                                  <motion.p
+                                                       initial={{
+                                                            opacity: 0,
+                                                            y: 10,
+                                                       }}
+                                                       animate={{
+                                                            opacity: 1,
+                                                            y: 0,
+                                                       }}
+                                                       className="text-red-600 text-center mt-4 font-medium bg-red-50 p-3 rounded-lg border border-red-200"
+                                                  >
+                                                       A apărut o eroare la
+                                                       trimitere. Te rugăm să ne
+                                                       suni sau să încerci mai
+                                                       târziu.
+                                                  </motion.p>
+                                             )}
                                         </div>
                                    </form>
                               </motion.div>

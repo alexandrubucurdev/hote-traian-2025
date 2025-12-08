@@ -14,22 +14,20 @@ const playfair = Playfair_Display({
      variable: "--font-playfair",
 });
 
-const DOMAIN_URL = "https://hotel-traian-2025.vercel.app/";
+const DOMAIN_URL = "https://www.hotelultraian.ro";
 
 export const metadata: Metadata = {
      metadataBase: new URL(DOMAIN_URL),
 
      title: {
           default: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
-          template: "%s | Hotel Traian Brașov", // Asta ajută paginile interne (ex: "Camere | Hotel Traian...")
+          template: "%s | Hotel Traian Brașov",
      },
      description:
           "Hotel Traian oferă cazare confortabilă în Brașov, la doar 10 minute de Centrul Vechi. Camere dotate modern, WiFi gratuit, parcare inclusă.",
-
-     // Iconițele pentru tab-ul browserului pot rămâne SVG
      icons: {
           icon: "/logo/logo.svg",
-          apple: "/logo-og.jpg", // Opțional, dar recomandat pentru iPhone
+          apple: "/logo-og.jpg",
      },
 
      keywords: [
@@ -45,7 +43,6 @@ export const metadata: Metadata = {
      authors: [{ name: "Hotel Traian Brașov", url: DOMAIN_URL }],
      creator: "Hotel Traian Brașov",
 
-     // Setări Open Graph pentru Facebook / WhatsApp / LinkedIn
      openGraph: {
           title: "Hotel Traian Brașov | Cazare în Orașul Coroanei",
           description:
@@ -54,7 +51,7 @@ export const metadata: Metadata = {
           siteName: "Hotel Traian Brașov",
           images: [
                {
-                    url: "/logo-og.jpg", // AICI trebuie să pui un JPG/PNG de 1200x630
+                    url: "/logo-og.jpg",
                     width: 1200,
                     height: 630,
                     alt: "Hotel Traian Brașov",
@@ -64,12 +61,11 @@ export const metadata: Metadata = {
           type: "website",
      },
 
-     // Setări pentru Twitter (X) - preia automat imaginea din OpenGraph dacă nu specifici alta
      twitter: {
           card: "summary_large_image",
           title: "Hotel Traian Brașov",
           description: "Cazare confortabilă în Brașov.",
-          images: ["/logo-og.jpg"], // Aceeași imagine ca mai sus
+          images: ["/logo-og.jpg"],
      },
 
      robots: {
@@ -85,7 +81,7 @@ export const metadata: Metadata = {
      },
 
      verification: {
-          google: "jlOPy-UN0ti_gEu5nbgI7r3WkT1X9vrwKPLWKINiiJk", // Nu uita să pui codul real aici
+          google: "jlOPy-UN0ti_gEu5nbgI7r3WkT1X9vrwKPLWKINiiJk",
      },
 };
 
