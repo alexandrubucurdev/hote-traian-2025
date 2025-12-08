@@ -14,7 +14,7 @@ const playfair = Playfair_Display({
      variable: "--font-playfair",
 });
 
-const DOMAIN_URL = "https://www.hotelultraian.ro";
+const DOMAIN_URL = "https://hotel-traian-2025.vercel.app/";
 
 export const metadata: Metadata = {
      metadataBase: new URL(DOMAIN_URL),
