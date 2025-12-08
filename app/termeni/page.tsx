@@ -107,7 +107,7 @@ export default function TermeniPage() {
                                    <ul className="list-disc list-inside space-y-2 text-gray-700 ml-2">
                                         <li>
                                              Cazarea se face începând cu ora{" "}
-                                             <strong>14:00</strong>.
+                                             <strong>12:00</strong>.
                                         </li>
                                         <li>
                                              Eliberarea camerelor se face până

@@ -3,19 +3,31 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import {
+     Menu,
+     X,
+     Phone,
+     Mail,
+     Home,
+     BedDouble,
+     Image as ImageIcon,
+     Info,
+     MapPin,
+     FileText,
+} from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 
+// --- Actualizare: Adăugat 'icon' pentru fiecare element ---
 const navigation = [
-     { name: "Acasă", href: "/" },
-     { name: "Camere", href: "/camere" },
-     { name: "Galerie", href: "/galerie" },
-     { name: "Despre Noi", href: "/despre" },
-     { name: "Locația", href: "/locatie" },
-     { name: "Convocator Acționari", href: "/actionari" },
-     { name: "Contact", href: "/contact" },
+     { name: "Acasă", href: "/", icon: Home },
+     { name: "Camere", href: "/camere", icon: BedDouble },
+     { name: "Galerie", href: "/galerie", icon: ImageIcon },
+     { name: "Despre Noi", href: "/despre", icon: Info },
+     { name: "Locația", href: "/locatie", icon: MapPin },
+     { name: "Convocator Acționari", href: "/actionari", icon: FileText },
+     { name: "Contact", href: "/contact", icon: Phone },
 ];
 
 const mobileMenuVariants = {
@@ -40,7 +52,7 @@ export default function Header() {
      const [lastScrollY, setLastScrollY] = useState(0);
      const pathname = usePathname();
 
-     const headerRef = useRef<HTMLDivElement>(null);
+     const headerRef = useRef(null);
      const [headerHeight, setHeaderHeight] = useState(0);
 
      const [isMediumOrLarger, setIsMediumOrLarger] = useState(false);
@@ -128,7 +140,7 @@ export default function Header() {
                                              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                                                   <div className="flex justify-between items-center text-sm">
                                                        <div className="flex items-center space-x-6">
-                                                            {/* Telefon Header - Modificat: Orizontal */}
+                                                            {/* Telefon Header */}
                                                             <div className="flex items-center space-x-2">
                                                                  <Phone className="h-4 w-4" />
                                                                  <div className="flex items-center space-x-2">
@@ -162,7 +174,7 @@ export default function Header() {
                                                                  className="flex items-center space-x-2 hover:text-traian-gold transition-colors"
                                                             >
                                                                  <Mail className="h-4 w-4" />
-                                                                 <span>
+                                                                 <span className="break-all">
                                                                       hoteltraianbrasov@gmail.com
                                                                  </span>
                                                             </a>
@@ -234,13 +246,14 @@ export default function Header() {
                                                        const isActive =
                                                             pathname ===
                                                             item.href;
+                                                       const Icon = item.icon; // Extragem iconița
                                                        return (
                                                             <Link
                                                                  key={item.name}
                                                                  href={
                                                                       item.href
                                                                  }
-                                                                 className={`font-medium transition-all duration-200 relative group ${
+                                                                 className={`group flex items-center space-x-1 font-medium transition-all duration-200 relative ${
                                                                       isScrolled
                                                                            ? "text-sm"
                                                                            : "text-base"
@@ -250,6 +263,10 @@ export default function Header() {
                                                                            : "text-traian-charcoal hover:text-traian-burgundy"
                                                                  }`}
                                                             >
+                                                                 {/* Afișăm iconița doar dacă e nevoie, de obicei pe desktop e mai curat fără, dar tu ai cerut */}
+                                                                 {/* <Icon className="w-4 h-4 mr-1" /> */}
+                                                                 {/* Dacă vrei iconițe și pe desktop, decomentează linia de mai sus */}
+
                                                                  {item.name}
                                                                  <span
                                                                       className={`absolute -bottom-1 left-0 h-0.5 bg-traian-burgundy transition-all duration-300 ${
@@ -331,11 +348,12 @@ export default function Header() {
                                         {navigation.map((item, index) => {
                                              const isActive =
                                                   pathname === item.href;
+                                             const Icon = item.icon; // Iconița pentru mobil
                                              return (
                                                   <Link
                                                        key={item.name}
                                                        href={item.href}
-                                                       className={`block px-3 py-2 text-base font-medium rounded-md transition-all duration-200 transform hover:translate-x-2 ${
+                                                       className={`flex items-center px-3 py-2 text-base font-medium rounded-md transition-all duration-200 transform hover:translate-x-2 ${
                                                             isActive
                                                                  ? "bg-gray-100 text-traian-burgundy"
                                                                  : "text-traian-charcoal hover:text-traian-burgundy hover:bg-gray-50"
@@ -359,6 +377,8 @@ export default function Header() {
                                                             )
                                                        }
                                                   >
+                                                       {/* Aici am adăugat iconița pentru meniul mobil */}
+                                                       <Icon className="w-5 h-5 mr-3" />
                                                        {item.name}
                                                   </Link>
                                              );

@@ -107,7 +107,7 @@ export default function HeroSection() {
                                    WiFi Gratuit
                               </div>
                               <div className="text-white/80 text-sm">
-                                   WIFI gratuit în spațiile publice
+                                   WIFI gratuit în spațiile comune
                               </div>
                          </div>
                          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">

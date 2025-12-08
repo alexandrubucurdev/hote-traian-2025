@@ -3,7 +3,17 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Phone, Mail, MapPin, Clock, Wifi, Car, Star, Map } from "lucide-react";
+import {
+     Phone,
+     Mail,
+     MapPin,
+     Clock,
+     Wifi,
+     Car,
+     Star,
+     Map,
+     FileText,
+} from "lucide-react";
 
 export default function Footer() {
      return (
@@ -43,7 +53,6 @@ export default function Footer() {
                                    Contact
                               </h3>
                               <div className="space-y-3 text-sm">
-                                   {/* Secțiunea Telefon */}
                                    <div className="flex items-start space-x-3">
                                         <Phone className="h-4 w-4 text-traian-gold" />
                                         <div className="flex flex-col">
@@ -65,7 +74,6 @@ export default function Footer() {
                                         </div>
                                    </div>
 
-                                   {/* Secțiunea E-mail */}
                                    <div className="flex items-center space-x-3">
                                         <Mail className="h-4 w-4 text-traian-gold" />
                                         <div>
@@ -78,7 +86,6 @@ export default function Footer() {
                                         </div>
                                    </div>
 
-                                   {/* Secțiunea Adresă */}
                                    <div className="flex items-start space-x-3">
                                         <MapPin className="h-4 w-4 text-traian-gold mt-0.5" />
                                         <div>
@@ -134,8 +141,8 @@ export default function Footer() {
                               </div>
                          </div>
 
-                         {/* Amenities */}
-                         <div>
+                         {/* Amenities & Terms */}
+                         <div className="flex flex-col">
                               <h3 className="font-serif font-semibold text-lg text-white mb-4">
                                    Facilități
                               </h3>
@@ -165,26 +172,28 @@ export default function Footer() {
                                         </span>
                                    </div>
                               </div>
+
+                              {/* MODIFICARE: Buton Termeni și Condiții mutat aici */}
+                              <div className="mt-8 flex justify-start">
+                                   <Link
+                                        href="/termeni"
+                                        className="group flex items-center space-x-2 text-base font-medium text-gray-300 hover:text-traian-gold transition-colors pb-1"
+                                   >
+                                        <FileText className="h-5 w-5 group-hover:text-traian-gold transition-colors" />
+                                        <span className="border-b border-gray-600 group-hover:border-traian-gold">
+                                             Termeni și Condiții
+                                        </span>
+                                   </Link>
+                              </div>
                          </div>
                     </div>
 
-                    {/* Bottom Bar - MODIFICAT: Elemente la capete (justify-between) */}
+                    {/* Bottom Bar - MODIFICAT: Doar copyright, centrat */}
                     <div className="border-t border-gray-700 mt-8 pt-8">
-                         <div className="flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-                              {/* Partea Stângă: Copyright */}
-                              <div className="text-center md:text-left mb-4 md:mb-0">
+                         <div className="flex flex-col md:flex-row justify-center items-center text-sm text-gray-400">
+                              <div className="text-center">
                                    © {new Date().getFullYear()} Hotel Traian
                                    Brașov. Toate drepturile rezervate.
-                              </div>
-
-                              {/* Partea Dreaptă: Termeni */}
-                              <div>
-                                   <Link
-                                        href="/termeni"
-                                        className="hover:text-traian-gold transition-colors"
-                                   >
-                                        Termeni și Condiții
-                                   </Link>
                               </div>
                          </div>
                     </div>

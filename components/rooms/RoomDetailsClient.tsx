@@ -274,7 +274,7 @@ export default function RoomDetailsClient({ room }: RoomDetailsClientProps) {
                                                             Check-in
                                                        </span>
                                                        <span className="font-bold text-traian-charcoal">
-                                                            14:00
+                                                            12:00
                                                        </span>
                                                   </div>
                                                   <div className="w-full h-[1px] bg-gray-200"></div>

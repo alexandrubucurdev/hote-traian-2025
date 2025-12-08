@@ -1,8 +1,17 @@
 "use client"; // Necesar pentru animații și formular
 
 import React, { useState } from "react";
+import Link from "next/link"; // Importăm Link pentru navigare internă
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Send, Building, FileCheck } from "lucide-react";
+import {
+     Phone,
+     Mail,
+     MapPin,
+     Send,
+     Building,
+     FileCheck,
+     FileText, // Am adăugat iconița pentru document
+} from "lucide-react";
 import Button from "@/components/ui/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,7 +27,7 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-// --- Componentă FormInput (Neschimbată) ---
+// --- Componentă FormInput ---
 const FormInput = ({ id, label, register, error, type = "text" }: any) => (
      <div className="relative">
           <input
@@ -69,7 +78,7 @@ const FormInput = ({ id, label, register, error, type = "text" }: any) => (
      </div>
 );
 
-// --- Componentă FormTextarea (Neschimbată) ---
+// --- Componentă FormTextarea ---
 const FormTextarea = ({ id, label, register, error }: any) => (
      <div className="relative">
           <textarea
@@ -120,7 +129,7 @@ const FormTextarea = ({ id, label, register, error }: any) => (
      </div>
 );
 
-// --- Variantele de animație pentru apariție (Neschimbate) ---
+// --- Variantele de animație ---
 const fadeIn = (delay = 0) => ({
      hidden: { opacity: 0, y: 20 },
      visible: {
@@ -131,7 +140,6 @@ const fadeIn = (delay = 0) => ({
 });
 
 export default function ContactPage() {
-     // Configurare formular (Neschimbată)
      const {
           register,
           handleSubmit,
@@ -141,7 +149,6 @@ export default function ContactPage() {
      });
 
      const onSubmit = (data: ContactFormValues) => {
-          // Simulare trimitere formular (Neschimbat)
           return new Promise((resolve) => {
                setTimeout(() => {
                     console.log(data);
@@ -153,7 +160,7 @@ export default function ContactPage() {
 
      return (
           <div className="min-h-screen bg-traian-cream">
-               {/* --- Secțiunea Hero (Neschimbată) --- */}
+               {/* --- Secțiunea Hero --- */}
                <section
                     className="bg-traian-charcoal text-white py-20 relative"
                     style={{
@@ -181,18 +188,17 @@ export default function ContactPage() {
                     </div>
                </section>
 
-               {/* --- Secțiune de Conținut (Info + Formular) --- */}
+               {/* --- Secțiune de Conținut --- */}
                <section className="py-20">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                         {/* Grila pentru Formular și Info */}
                          <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-                              {/* --- MODIFICAT: Coloana din Stânga (Info) --- */}
+                              {/* --- Coloana din Stânga (Info) --- */}
                               <motion.div
                                    className="lg:col-span-2 space-y-12"
                                    initial="hidden"
                                    whileInView="visible"
                                    viewport={{ once: true, amount: 0.1 }}
-                                   variants={fadeIn(0.2)} // Animația apare prima
+                                   variants={fadeIn(0.2)}
                               >
                                    {/* Titlu Info */}
                                    <div>
@@ -206,7 +212,7 @@ export default function ContactPage() {
                                         </p>
                                    </div>
 
-                                   {/* Informații Contact Interactive */}
+                                   {/* Informații Contact */}
                                    <div className="space-y-6">
                                         <div className="flex items-start group p-4 rounded-lg hover:bg-white hover:shadow-md transition-all">
                                              <Phone className="h-6 w-6 text-traian-burgundy mr-4 flex-shrink-0 mt-1 transition-all duration-300 group-hover:text-traian-gold group-hover:scale-110" />
@@ -263,7 +269,7 @@ export default function ContactPage() {
                                         </a>
                                    </div>
 
-                                   {/* Informații Legale */}
+                                   {/* Informații Legale + Termeni */}
                                    <div>
                                         <h3 className="font-serif text-2xl font-bold text-traian-charcoal mb-4">
                                              Date Legale
@@ -302,11 +308,28 @@ export default function ContactPage() {
                                                        </p>
                                                   </div>
                                              </div>
+
+                                             {/* --- AICI AM ADĂUGAT BUTONUL CĂTRE TERMENI --- */}
+                                             <div className="flex items-start group pt-2">
+                                                  <FileText className="h-5 w-5 text-traian-burgundy mr-4 flex-shrink-0 mt-1" />
+                                                  <div>
+                                                       <h4 className="font-semibold text-traian-charcoal mb-1">
+                                                            Regulament
+                                                       </h4>
+                                                       <Link
+                                                            href="/termeni"
+                                                            className="text-traian-burgundy hover:text-traian-gold font-medium transition-colors border-b border-traian-burgundy/30 pb-0.5 hover:border-traian-gold"
+                                                       >
+                                                            Vezi Termeni și
+                                                            Condiții
+                                                       </Link>
+                                                  </div>
+                                             </div>
                                         </div>
                                    </div>
                               </motion.div>
 
-                              {/* --- MODIFICAT: Coloana din Dreapta (Formular) --- */}
+                              {/* --- Coloana din Dreapta (Formular) --- */}
                               <motion.div
                                    className="lg:col-span-3 bg-white p-8 lg:p-12 rounded-2xl shadow-xl flex flex-col justify-center h-full"
                                    initial="hidden"
@@ -319,7 +342,6 @@ export default function ContactPage() {
                                         className="space-y-8"
                                    >
                                         <div>
-                                             {/* MODIFICARE AICI: text-center și mb-10 */}
                                              <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-10 text-center">
                                                   Trimite-ne un Mesaj
                                              </h2>
@@ -376,7 +398,7 @@ export default function ContactPage() {
                               </motion.div>
                          </div>
 
-                         {/* --- Secțiunea Hărții (Neschimbată) --- */}
+                         {/* --- Secțiunea Hărții --- */}
                          <motion.div
                               className="mt-16 lg:mt-24"
                               initial="hidden"

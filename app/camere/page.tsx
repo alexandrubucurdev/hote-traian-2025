@@ -216,7 +216,7 @@ export default function CamerePage() {
                                    <li className="flex items-start">
                                         <Info className="h-5 w-5 text-traian-burgundy mr-3 flex-shrink-0 mt-1" />
                                         <span>
-                                             Ziua hotelieră începe la ora 14:00
+                                             Ziua hotelieră începe la ora 12:00
                                              și se termină a doua zi la ora
                                              12:00.
                                         </span>

@@ -30,7 +30,8 @@ export const hotelAmenities: Amenity[] = [
      {
           id: "wifi",
           name: "WiFi Gratuit",
-          description: "Internet wireless gratuit în toate zonele hotelului",
+          description:
+               "Internet wireless gratuit în toate spațiile comune ale hotelului",
           icon: Wifi,
           category: "general",
      },
@@ -52,7 +53,7 @@ export const hotelAmenities: Amenity[] = [
      {
           id: "location",
           name: "Locație Accesibilă",
-          description: "La 10 minute de Centrul Vechi",
+          description: "La 10 minute cu mașina de Centrul Vechi",
           icon: MapPin,
           category: "general",
      },
