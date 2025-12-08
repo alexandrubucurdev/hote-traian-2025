@@ -3,6 +3,8 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+// 1. Importăm hook-ul de navigare
+import { usePathname } from "next/navigation";
 import {
      Phone,
      Mail,
@@ -16,6 +18,12 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
+     // 2. Aflăm pagina curentă
+     const pathname = usePathname();
+
+     // Verificăm dacă suntem pe prima pagină
+     const isHomePage = pathname === "/";
+
      return (
           <footer className="bg-traian-charcoal text-white">
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -173,7 +181,6 @@ export default function Footer() {
                                    </div>
                               </div>
 
-                              {/* MODIFICARE: Buton Termeni și Condiții mutat aici */}
                               <div className="mt-8 flex justify-start">
                                    <Link
                                         href="/termeni"
@@ -188,13 +195,30 @@ export default function Footer() {
                          </div>
                     </div>
 
-                    {/* Bottom Bar - MODIFICAT: Doar copyright, centrat */}
+                    {/* Bottom Bar */}
                     <div className="border-t border-gray-700 mt-8 pt-8">
-                         <div className="flex flex-col md:flex-row justify-center items-center text-sm text-gray-400">
-                              <div className="text-center">
+                         <div className="flex flex-col justify-center items-center space-y-2">
+                              <div className="text-center text-sm text-gray-400">
                                    © {new Date().getFullYear()} Hotel Traian
                                    Brașov. Toate drepturile rezervate.
                               </div>
+
+                              {/* 3. AICI ESTE MODIFICAREA:
+                Acest div apare DOAR dacă ești pe pagina principală (isHomePage === true)
+            */}
+                              {isHomePage && (
+                                   <div className="text-center text-[10px] text-gray-600 mt-2">
+                                        Sursă foto copertă:{" "}
+                                        <a
+                                             href="https://www.freepik.com/"
+                                             target="_blank"
+                                             rel="noopener noreferrer"
+                                             className="hover:text-gray-500 transition-colors underline decoration-gray-700"
+                                        >
+                                             Freepik
+                                        </a>
+                                   </div>
+                              )}
                          </div>
                     </div>
                </div>
