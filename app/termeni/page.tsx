@@ -191,7 +191,7 @@ export default function TermeniPage() {
                                         <li>
                                              Să nu folosească prosoapele din
                                              dotarea hotelului pentru: șters
-                                             părul vopsit, demacheat, curățat
+                                             părul vopsit, demachiat, curățat
                                              încălțămintea, geamantanele,
                                              pardoseala etc. A se folosi
                                              exclusiv pentru uz corporal.

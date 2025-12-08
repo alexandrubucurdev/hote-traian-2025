@@ -64,7 +64,7 @@ export const metadata: Metadata = {
           siteName: "Hotel Traian Brașov",
           images: [
                {
-                    url: "/logo/logo.svg",
+                    url: "/logo/bg.webp",
                     width: 1200,
                     height: 630,
                     alt: "Hotel Traian Brașov - Cazare de Calitate",
