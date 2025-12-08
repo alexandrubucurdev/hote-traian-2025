@@ -18,9 +18,10 @@ import {
      Shirt,
      Lock,
      Info,
+     Phone, // Am importat iconița de telefon
 } from "lucide-react";
 
-// --- Variantele de animație pentru apariție (Exact ca în ContactPage) ---
+// --- Variantele de animație pentru apariție ---
 const fadeIn = (delay = 0) => ({
      hidden: { opacity: 0, y: 20 },
      visible: {
@@ -34,7 +35,6 @@ export default function TermeniPage() {
      return (
           <div className="min-h-screen bg-traian-cream flex flex-col">
                {/* --- Header / Hero Section --- */}
-               {/* MODIFICARE: Redus padding pe mobil (py-12) față de desktop (md:py-20) */}
                <section
                     className="bg-traian-charcoal text-white py-12 md:py-20 relative"
                     style={{
@@ -62,14 +62,11 @@ export default function TermeniPage() {
                </section>
 
                {/* --- Main Content --- */}
-               {/* MODIFICARE: Redus padding pe mobil (py-8) pentru a elimina spațiul alb excesiv */}
                <section className="py-8 md:py-20 flex-1">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                          <motion.div
                               className="bg-white rounded-2xl shadow-xl p-6 md:p-12 space-y-12"
                               initial="hidden"
-                              // MODIFICARE: Folosim 'animate' în loc de 'whileInView' pentru a forța încărcarea
-                              // imediată a conținutului, evitând problemele pe mobil la elemente lungi.
                               animate="visible"
                               variants={fadeIn(0.2)}
                          >
@@ -95,6 +92,85 @@ export default function TermeniPage() {
                                         paragrafe:
                                    </p>
                               </div>
+
+                              {/* Rezervare și Anulare - MODIFICAT AICI */}
+                              <section>
+                                   <div className="flex items-center space-x-3 mb-4">
+                                        <CalendarDays className="h-6 w-6 text-traian-burgundy" />
+                                        <h2 className="font-serif text-2xl font-bold text-traian-charcoal">
+                                             Rezervare și Anulare
+                                        </h2>
+                                   </div>
+                                   <div className="text-gray-700 space-y-6">
+                                        {/* --- NOTIFICARE REZERVARI TELEFONICE --- */}
+                                        <div className="bg-traian-gold/10 border-l-4 border-traian-gold p-4 rounded-r-lg flex items-start space-x-4">
+                                             <Phone className="h-6 w-6 text-traian-burgundy flex-shrink-0 mt-1" />
+                                             <div>
+                                                  <h3 className="font-bold text-traian-charcoal text-lg mb-1">
+                                                       Rezervări Exclusiv
+                                                       Telefonice
+                                                  </h3>
+                                                  <p className="text-gray-800">
+                                                       Vă informăm că toate
+                                                       rezervările se efectuează{" "}
+                                                       <strong>
+                                                            doar telefonic
+                                                       </strong>
+                                                       . Pentru a verifica
+                                                       disponibilitatea și a
+                                                       rezerva o cameră, vă
+                                                       rugăm să contactați
+                                                       recepția hotelului la
+                                                       numerele afișate în
+                                                       secțiunea de contact.
+                                                  </p>
+                                             </div>
+                                        </div>
+
+                                        <p>
+                                             Pentru orice modificare sau anulare
+                                             de rezervare contactați recepția
+                                             hotelului.
+                                        </p>
+
+                                        <div className="bg-traian-cream/50 p-4 rounded-lg border border-traian-gold/30">
+                                             <p className="mb-2">
+                                                  <strong>
+                                                       Rezervări mici (până la 5
+                                                       camere):
+                                                  </strong>{" "}
+                                                  Nu se vor aplica penalizări
+                                                  dacă anularea se va face cu
+                                                  cel puțin{" "}
+                                                  <strong>
+                                                       5 zile înainte
+                                                  </strong>
+                                                  . Penalizarea reprezintă
+                                                  contravaloarea primei zile de
+                                                  cazare.
+                                             </p>
+                                             <p className="mb-2">
+                                                  <strong>
+                                                       Rezervări mari (5 sau mai
+                                                       multe camere):
+                                                  </strong>{" "}
+                                                  Anularea acestora se va face
+                                                  cu cel puțin{" "}
+                                                  <strong>
+                                                       10 zile înainte
+                                                  </strong>{" "}
+                                                  de data sosirii.
+                                             </p>
+                                             <p>
+                                                  Pentru o rezervare de mai mult
+                                                  de 5 camere, se va solicita
+                                                  achitarea unui avans. Avansul
+                                                  plătit nu se poate returna în
+                                                  caz de anulare a rezervării.
+                                             </p>
+                                        </div>
+                                   </div>
+                              </section>
 
                               {/* Sosire și Plecare */}
                               <section>
@@ -212,59 +288,6 @@ export default function TermeniPage() {
                                              hotelului.
                                         </li>
                                    </ul>
-                              </section>
-
-                              {/* Rezervare și Anulare */}
-                              <section>
-                                   <div className="flex items-center space-x-3 mb-4">
-                                        <CalendarDays className="h-6 w-6 text-traian-burgundy" />
-                                        <h2 className="font-serif text-2xl font-bold text-traian-charcoal">
-                                             Rezervare și Anulare
-                                        </h2>
-                                   </div>
-                                   <div className="text-gray-700 space-y-4">
-                                        <p>
-                                             Pentru rezervare și orice anulare
-                                             de rezervare contactați recepția
-                                             hotelului.
-                                        </p>
-                                        <div className="bg-traian-cream/50 p-4 rounded-lg border border-traian-gold/30">
-                                             <p className="mb-2">
-                                                  <strong>
-                                                       Rezervări mici (până la 5
-                                                       camere):
-                                                  </strong>{" "}
-                                                  Nu se vor aplica penalizări
-                                                  dacă anularea se va face cu
-                                                  cel puțin{" "}
-                                                  <strong>
-                                                       5 zile înainte
-                                                  </strong>
-                                                  . Penalizarea reprezintă
-                                                  contravaloarea primei zile de
-                                                  cazare.
-                                             </p>
-                                             <p className="mb-2">
-                                                  <strong>
-                                                       Rezervări mari (5 sau mai
-                                                       multe camere):
-                                                  </strong>{" "}
-                                                  Anularea acestora se va face
-                                                  cu cel puțin{" "}
-                                                  <strong>
-                                                       10 zile înainte
-                                                  </strong>{" "}
-                                                  de data sosirii.
-                                             </p>
-                                             <p>
-                                                  Pentru o rezervare de mai mult
-                                                  de 5 camere, se va solicita
-                                                  achitarea unui avans. Avansul
-                                                  plătit nu se poate returna în
-                                                  caz de anulare a rezervării.
-                                             </p>
-                                        </div>
-                                   </div>
                               </section>
 
                               {/* Tarife și Plată */}

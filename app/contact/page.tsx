@@ -12,13 +12,15 @@ import {
      Building,
      FileCheck,
      FileText,
+     CalendarDays,
+     Info,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-// --- Schema de validare (Telefon Obligatoriu) ---
+// --- Schema de validare ---
 const contactSchema = z.object({
      name: z.string().min(3, "Numele este obligatoriu"),
      email: z.string().email("Adresă de e-mail invalidă"),
@@ -30,8 +32,7 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-// --- Componentă FormInput ACTUALIZATĂ ---
-// Acum acceptă `...props` pentru a permite `autoComplete`
+// --- Componentă FormInput ---
 const FormInput = ({
      id,
      label,
@@ -45,7 +46,7 @@ const FormInput = ({
                id={id}
                type={type}
                {...register(id)}
-               {...props} // AICI e modificarea: transmitem autoComplete mai departe
+               {...props}
                placeholder=" "
                className={`block w-full px-4 py-3 bg-transparent border-0 border-b-2 
             appearance-none text-traian-charcoal 
@@ -379,9 +380,72 @@ export default function ContactPage() {
                                         className="space-y-8"
                                    >
                                         <div>
-                                             <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-10 text-center">
+                                             <h2 className="font-serif text-3xl font-bold text-traian-charcoal mb-6 text-center">
                                                   Trimite-ne un Mesaj
                                              </h2>
+
+                                             {/* --- NOTIFICARE REZERVARE + INFO (MODIFICAT AICI) --- */}
+                                             <div className="bg-traian-gold/10 border-l-4 border-traian-gold p-4 rounded-r-lg mb-8">
+                                                  <div className="flex items-start">
+                                                       <div className="flex-shrink-0">
+                                                            <CalendarDays className="h-5 w-5 text-traian-burgundy mt-0.5" />
+                                                       </div>
+                                                       <div className="ml-3">
+                                                            <h3 className="text-sm font-bold text-traian-charcoal">
+                                                                 Rezervări vs.
+                                                                 Informații
+                                                            </h3>
+                                                            <div className="mt-2 text-sm text-gray-700 space-y-2">
+                                                                 <p>
+                                                                      Vă
+                                                                      informăm
+                                                                      că{" "}
+                                                                      <strong>
+                                                                           toate
+                                                                           rezervările
+                                                                           se
+                                                                           efectuează
+                                                                           exclusiv
+                                                                           telefonic
+                                                                      </strong>
+                                                                      . Vă rugăm
+                                                                      să ne
+                                                                      contactați
+                                                                      la
+                                                                      numerele
+                                                                      afișate
+                                                                      alăturat
+                                                                      pentru
+                                                                      disponibilitate.
+                                                                 </p>
+                                                                 <p>
+                                                                      <strong>
+                                                                           Formularul
+                                                                           de
+                                                                           mai
+                                                                           jos
+                                                                      </strong>{" "}
+                                                                      este
+                                                                      destinat
+                                                                      doar
+                                                                      pentru
+                                                                      solicitarea
+                                                                      de
+                                                                      <strong>
+                                                                           {" "}
+                                                                           informații
+                                                                           suplimentare
+                                                                      </strong>{" "}
+                                                                      și nu
+                                                                      poate fi
+                                                                      utilizat
+                                                                      pentru
+                                                                      rezervări.
+                                                                 </p>
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                             </div>
 
                                              <div className="space-y-8">
                                                   <FormInput
@@ -389,7 +453,7 @@ export default function ContactPage() {
                                                        label="Nume și Prenume"
                                                        register={register}
                                                        error={errors.name}
-                                                       autoComplete="name" // Adăugat pentru Autofill
+                                                       autoComplete="name"
                                                   />
                                                   <FormInput
                                                        id="email"
@@ -397,7 +461,7 @@ export default function ContactPage() {
                                                        type="email"
                                                        register={register}
                                                        error={errors.email}
-                                                       autoComplete="email" // Adăugat pentru Autofill
+                                                       autoComplete="email"
                                                   />
                                                   <FormInput
                                                        id="phone"
@@ -405,7 +469,7 @@ export default function ContactPage() {
                                                        type="tel"
                                                        register={register}
                                                        error={errors.phone}
-                                                       autoComplete="tel" // Adăugat pentru Autofill
+                                                       autoComplete="tel"
                                                   />
                                                   <FormTextarea
                                                        id="message"
