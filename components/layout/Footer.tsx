@@ -3,7 +3,6 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-// 1. Importăm hook-ul de navigare
 import { usePathname } from "next/navigation";
 import {
      Phone,
@@ -18,16 +17,13 @@ import {
 } from "lucide-react";
 
 export default function Footer() {
-     // 2. Aflăm pagina curentă
      const pathname = usePathname();
-
-     // Verificăm dacă suntem pe prima pagină
      const isHomePage = pathname === "/";
 
      return (
           <footer className="bg-traian-charcoal text-white">
                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
                          {/* Hotel Info */}
                          <div className="lg:col-span-1">
                               <Image
@@ -195,30 +191,43 @@ export default function Footer() {
                          </div>
                     </div>
 
-                    {/* Bottom Bar */}
-                    <div className="border-t border-gray-700 mt-8 pt-8">
-                         <div className="flex flex-col justify-center items-center space-y-2">
-                              <div className="text-center text-sm text-gray-400">
+                    {/* --- BOTTOM BAR --- */}
+                    <div className="border-t border-gray-700 pt-8">
+                         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
+                              {/* Stânga: Copyright */}
+                              <div className="text-center md:text-left">
                                    © {new Date().getFullYear()} Hotel Traian
                                    Brașov. Toate drepturile rezervate.
                               </div>
 
-                              {/* 3. AICI ESTE MODIFICAREA:
-                Acest div apare DOAR dacă ești pe pagina principală (isHomePage === true)
-            */}
-                              {isHomePage && (
-                                   <div className="text-center text-[10px] text-gray-600 mt-2">
-                                        Sursă foto copertă:{" "}
+                              {/* Dreapta: Credite (Autor + Freepik) */}
+                              <div className="flex flex-col items-center md:items-end space-y-1.5">
+                                   {/* Credit Autor - ACUM ÎN ROMÂNĂ */}
+                                   <div className="text-xs text-gray-500">
+                                        Realizat de{" "}
                                         <a
-                                             href="https://www.freepik.com/"
-                                             target="_blank"
-                                             rel="noopener noreferrer"
-                                             className="hover:text-gray-500 transition-colors underline decoration-gray-700"
+                                             href="#" // Link portofoliu
+                                             className="hover:text-traian-gold transition-colors font-medium"
                                         >
-                                             Freepik
+                                             Alexandru Bucur
                                         </a>
                                    </div>
-                              )}
+
+                                   {/* Credit Freepik (Doar pe Home) - ACUM ÎN ROMÂNĂ */}
+                                   {isHomePage && (
+                                        <div className="text-[10px] text-gray-600">
+                                             Sursă foto copertă:{" "}
+                                             <a
+                                                  href="https://www.freepik.com/"
+                                                  target="_blank"
+                                                  rel="noopener noreferrer"
+                                                  className="hover:text-gray-500 transition-colors underline decoration-gray-700"
+                                             >
+                                                  Freepik
+                                             </a>
+                                        </div>
+                                   )}
+                              </div>
                          </div>
                     </div>
                </div>
