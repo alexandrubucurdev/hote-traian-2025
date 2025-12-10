@@ -171,9 +171,9 @@ export default function ContactPage() {
           setSubmitStatus("idle");
 
           // --- CONFIGURARE EMAILJS ---
-          const SERVICE_ID = "service_rmj1tif";
-          const TEMPLATE_ID = "template_xlaed3z";
-          const PUBLIC_KEY = "ENUV4maDTByaChJ5l";
+          const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+          const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+          const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
 
           try {
                await emailjs.send(
