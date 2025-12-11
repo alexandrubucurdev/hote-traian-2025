@@ -16,7 +16,7 @@ const playfair = Playfair_Display({
 });
 
 export const viewport: Viewport = {
-     themeColor: "#722F37", // Setează culoarea browserului pe mobil (Chrome/Safari) la Burgundy
+     themeColor: "#722F37", // Setează culoarea browserului pe mobilla Burgundy
      width: "device-width",
      initialScale: 1,
 };

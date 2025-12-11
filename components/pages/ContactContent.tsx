@@ -1,9 +1,8 @@
-"use client"; // Necesar pentru animații și formular
+"use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import emailjs from "@emailjs/browser";
 import {
      Phone,
      Mail,
@@ -13,7 +12,6 @@ import {
      FileCheck,
      FileText,
      CalendarDays,
-     Info,
 } from "lucide-react";
 import Button from "@/components/ui/Button";
 import { useForm } from "react-hook-form";
@@ -153,47 +151,43 @@ const fadeIn = (delay = 0) => ({
      },
 });
 
-export default function ContactPage() {
-     const [submitStatus, setSubmitStatus] = useState<
-          "idle" | "success" | "error"
-     >("idle");
-
+export default function ContactContent() {
      const {
           register,
           handleSubmit,
           reset,
-          formState: { errors, isSubmitting },
+          formState: { errors },
      } = useForm<ContactFormValues>({
           resolver: zodResolver(contactSchema),
      });
 
-     const onSubmit = async (data: ContactFormValues) => {
-          setSubmitStatus("idle");
+     const onSubmit = (data: ContactFormValues) => {
+          // 1. Definim destinatarul
+          const mailTo = "hoteltraianbrasov@gmail.com";
 
-          // --- CONFIGURARE EMAILJS ---
-          const SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
-          const TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
-          const PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY!;
+          // 2. Creăm subiectul emailului
+          const subject = `Mesaj nou de la ${data.name} (Hotel Traian)`;
 
-          try {
-               await emailjs.send(
-                    SERVICE_ID,
-                    TEMPLATE_ID,
-                    {
-                         name: data.name,
-                         email: data.email,
-                         phone: data.phone,
-                         message: data.message,
-                    },
-                    PUBLIC_KEY
-               );
+          // 3. Construim corpul emailului cu toate datele
+          const body =
+               `Salut,\n\nAi primit un mesaj nou prin formularul de contact de pe site:\n\n` +
+               `Nume: ${data.name}\n` +
+               `Email: ${data.email}\n` +
+               `Telefon: ${data.phone}\n\n` +
+               `Mesaj:\n${data.message}\n\n` +
+               `--------------------------------\n` +
+               `Trimis de pe www.hotelultraian.ro`;
 
-               setSubmitStatus("success");
-               reset();
-          } catch (error) {
-               console.error("Eroare la trimitere:", error);
-               setSubmitStatus("error");
-          }
+          // 4. Creăm link-ul mailto (folosim encodeURIComponent pentru a trata spațiile și caracterele speciale)
+          const mailtoLink = `mailto:${mailTo}?subject=${encodeURIComponent(
+               subject
+          )}&body=${encodeURIComponent(body)}`;
+
+          // 5. Deschidem clientul de email
+          window.location.href = mailtoLink;
+
+          // Opțional: Resetăm formularul după click
+          reset();
      };
 
      return (
@@ -384,7 +378,7 @@ export default function ContactPage() {
                                                   Trimite-ne un Mesaj
                                              </h2>
 
-                                             {/* --- NOTIFICARE REZERVARE + INFO (MODIFICAT AICI) --- */}
+                                             {/* --- NOTIFICARE REZERVARE + INFO --- */}
                                              <div className="bg-traian-gold/10 border-l-4 border-traian-gold p-4 rounded-r-lg mb-8">
                                                   <div className="flex items-start">
                                                        <div className="flex-shrink-0">
@@ -430,9 +424,8 @@ export default function ContactPage() {
                                                                       doar
                                                                       pentru
                                                                       solicitarea
-                                                                      de
+                                                                      de{" "}
                                                                       <strong>
-                                                                           {" "}
                                                                            informații
                                                                            suplimentare
                                                                       </strong>{" "}
@@ -486,54 +479,10 @@ export default function ContactPage() {
                                                   variant="primary"
                                                   size="lg"
                                                   className="w-full"
-                                                  disabled={isSubmitting}
                                              >
-                                                  {isSubmitting ? (
-                                                       "Se trimite..."
-                                                  ) : (
-                                                       <>
-                                                            Trimite Mesajul{" "}
-                                                            <Send className="w-4 h-4 ml-2" />
-                                                       </>
-                                                  )}
+                                                  Pregătește Email-ul{" "}
+                                                  <Send className="w-4 h-4 ml-2" />
                                              </Button>
-
-                                             {/* --- MESAJE DE SUCCES / EROARE --- */}
-                                             {submitStatus === "success" && (
-                                                  <motion.p
-                                                       initial={{
-                                                            opacity: 0,
-                                                            y: 10,
-                                                       }}
-                                                       animate={{
-                                                            opacity: 1,
-                                                            y: 0,
-                                                       }}
-                                                       className="text-green-600 text-center mt-4 font-medium bg-green-50 p-3 rounded-lg border border-green-200"
-                                                  >
-                                                       Mesajul tău a fost trimis
-                                                       cu succes! Te vom
-                                                       contacta în curând.
-                                                  </motion.p>
-                                             )}
-                                             {submitStatus === "error" && (
-                                                  <motion.p
-                                                       initial={{
-                                                            opacity: 0,
-                                                            y: 10,
-                                                       }}
-                                                       animate={{
-                                                            opacity: 1,
-                                                            y: 0,
-                                                       }}
-                                                       className="text-red-600 text-center mt-4 font-medium bg-red-50 p-3 rounded-lg border border-red-200"
-                                                  >
-                                                       A apărut o eroare la
-                                                       trimitere. Te rugăm să ne
-                                                       suni sau să încerci mai
-                                                       târziu.
-                                                  </motion.p>
-                                             )}
                                         </div>
                                    </form>
                               </motion.div>
