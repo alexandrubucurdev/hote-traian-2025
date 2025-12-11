@@ -87,8 +87,16 @@ export default function HeroSection() {
                          </Button>
 
                          <a
+                              href="/contact"
+                              className="hidden md:inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-8 py-4 text-lg group shadow-xl hover:shadow-2xl transform hover:scale-105 cursor-pointer"
+                         >
+                              <Phone className="mr-2 h-5 w-5" />
+                              Sună Acum
+                         </a>
+
+                         <a
                               href="tel:+40746332414"
-                              className="inline-flex items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-8 py-4 text-lg group shadow-xl hover:shadow-2xl transform hover:scale-105 cursor-pointer"
+                              className="inline-flex md:hidden items-center justify-center font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 bg-traian-gold text-traian-charcoal hover:bg-traian-gold/90 focus:ring-traian-gold px-8 py-4 text-lg group shadow-xl hover:shadow-2xl transform hover:scale-105 cursor-pointer"
                          >
                               <Phone className="mr-2 h-5 w-5" />
                               Sună Acum

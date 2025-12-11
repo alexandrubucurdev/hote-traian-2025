@@ -18,7 +18,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 
-// --- Schema de validare ---
 const contactSchema = z.object({
      name: z.string().min(3, "Numele este obligatoriu"),
      email: z.string().email("Adresă de e-mail invalidă"),
@@ -30,7 +29,6 @@ const contactSchema = z.object({
 
 type ContactFormValues = z.infer<typeof contactSchema>;
 
-// --- Componentă FormInput ---
 const FormInput = ({
      id,
      label,
@@ -89,7 +87,6 @@ const FormInput = ({
      </div>
 );
 
-// --- Componentă FormTextarea ---
 const FormTextarea = ({ id, label, register, error, ...props }: any) => (
      <div className="relative">
           <textarea
@@ -141,7 +138,6 @@ const FormTextarea = ({ id, label, register, error, ...props }: any) => (
      </div>
 );
 
-// --- Variantele de animație ---
 const fadeIn = (delay = 0) => ({
      hidden: { opacity: 0, y: 20 },
      visible: {
@@ -162,15 +158,12 @@ export default function ContactContent() {
      });
 
      const onSubmit = (data: ContactFormValues) => {
-          // 1. Definim destinatarul
           const mailTo = "hoteltraianbrasov@gmail.com";
 
-          // 2. Creăm subiectul emailului
           const subject = `Mesaj nou de la ${data.name} (Hotel Traian)`;
 
-          // 3. Construim corpul emailului cu toate datele
           const body =
-               `Salut,\n\nAi primit un mesaj nou prin formularul de contact de pe site:\n\n` +
+               `Mesaj nou prin formularul de contact de pe site:\n\n` +
                `Nume: ${data.name}\n` +
                `Email: ${data.email}\n` +
                `Telefon: ${data.phone}\n\n` +
@@ -178,15 +171,12 @@ export default function ContactContent() {
                `--------------------------------\n` +
                `Trimis de pe www.hotelultraian.ro`;
 
-          // 4. Creăm link-ul mailto (folosim encodeURIComponent pentru a trata spațiile și caracterele speciale)
           const mailtoLink = `mailto:${mailTo}?subject=${encodeURIComponent(
                subject
           )}&body=${encodeURIComponent(body)}`;
 
-          // 5. Deschidem clientul de email
           window.location.href = mailtoLink;
 
-          // Opțional: Resetăm formularul după click
           reset();
      };
 
