@@ -19,7 +19,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/ui/Button";
 
-// --- Actualizare: Adăugat 'icon' pentru fiecare element ---
 const navigation = [
      { name: "Acasă", href: "/", icon: Home },
      { name: "Camere", href: "/camere", icon: BedDouble },
@@ -234,7 +233,7 @@ export default function Header() {
                                         </div>
 
                                         {/* Navigație Desktop */}
-                                        <div className="hidden lg:block">
+                                        <div className="hidden text-center px-8 lg:block">
                                              <div
                                                   className={`flex items-center transition-all duration-300 ${
                                                        isScrolled
@@ -246,7 +245,6 @@ export default function Header() {
                                                        const isActive =
                                                             pathname ===
                                                             item.href;
-                                                       const Icon = item.icon; // Extragem iconița
                                                        return (
                                                             <Link
                                                                  key={item.name}
@@ -263,10 +261,6 @@ export default function Header() {
                                                                            : "text-traian-charcoal hover:text-traian-burgundy"
                                                                  }`}
                                                             >
-                                                                 {/* Afișăm iconița doar dacă e nevoie, de obicei pe desktop e mai curat fără, dar tu ai cerut */}
-                                                                 {/* <Icon className="w-4 h-4 mr-1" /> */}
-                                                                 {/* Dacă vrei iconițe și pe desktop, decomentează linia de mai sus */}
-
                                                                  {item.name}
                                                                  <span
                                                                       className={`absolute -bottom-1 left-0 h-0.5 bg-traian-burgundy transition-all duration-300 ${
@@ -279,7 +273,7 @@ export default function Header() {
                                                        );
                                                   })}
                                                   <a
-                                                       href="tel:+40746332414"
+                                                       href="/contact"
                                                        className={`bg-traian-burgundy text-white rounded-lg hover:bg-traian-burgundy/90 transition-all duration-300 font-medium transform hover:scale-105 hover:shadow-lg ${
                                                             isScrolled
                                                                  ? "px-4 py-1.5 text-sm"
@@ -348,7 +342,7 @@ export default function Header() {
                                         {navigation.map((item, index) => {
                                              const isActive =
                                                   pathname === item.href;
-                                             const Icon = item.icon; // Iconița pentru mobil
+                                             const Icon = item.icon;
                                              return (
                                                   <Link
                                                        key={item.name}
@@ -377,7 +371,6 @@ export default function Header() {
                                                             )
                                                        }
                                                   >
-                                                       {/* Aici am adăugat iconița pentru meniul mobil */}
                                                        <Icon className="w-5 h-5 mr-3" />
                                                        {item.name}
                                                   </Link>
@@ -397,8 +390,17 @@ export default function Header() {
                                              }}
                                         >
                                              <a
+                                                  href="/contact"
+                                                  className="hidden md:block w-full text-center bg-traian-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-traian-burgundy/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+                                                  onClick={() =>
+                                                       setMobileMenuOpen(false)
+                                                  }
+                                             >
+                                                  Rezervă Acum
+                                             </a>
+                                             <a
                                                   href="tel:+40746332414"
-                                                  className="block w-full text-center bg-traian-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-traian-burgundy/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
+                                                  className="block md:hidden w-full text-center bg-traian-burgundy text-white px-6 py-3 rounded-lg font-medium hover:bg-traian-burgundy/90 transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
                                                   onClick={() =>
                                                        setMobileMenuOpen(false)
                                                   }
