@@ -1,0 +1,8 @@
+<IfModule mod_rewrite.c>
+     RewriteEngine On RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html\
+     HTTP/ RewriteRule ^index\.html$ / [R=301,L] Redirect 301 /home.html /
+     Redirect 301 /indexd7e2.html /actionari/ Redirect 301 /contact.html
+     /contact/ Redirect 301 /tarife.html /camere/ Redirect 301
+     /galerie-foto-hotel-traian.html /galerie/ Redirect 301 /harta-hotel.html
+     /locatie/ ErrorDocument 404 /404.html
+</IfModule>
